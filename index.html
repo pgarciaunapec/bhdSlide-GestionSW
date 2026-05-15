@@ -53,7 +53,6 @@
 
       /* --- CONTENEDOR PRINCIPAL DE LA DIAPOSITIVA --- */
       .slide-container {
-        /* Responsive sizing: don't exceed viewport */
         width: min(1280px, 96vw);
         max-width: 96vw;
         height: min(720px, 96vh);
@@ -703,7 +702,7 @@
             "
           >
             <div class="num" style="color: var(--accent-blue)">04</div>
-            <h3>Business Model Canvas</h3>
+            <h3>Análisis del Modelo (BMC)</h3>
           </div>
           <div
             class="agenda-card-rect"
@@ -713,7 +712,7 @@
             "
           >
             <div class="num" style="color: var(--accent-blue)">05</div>
-            <h3>Mapeo de Bloques (BMC)</h3>
+            <h3>Evaluación Crítica (FODA)</h3>
           </div>
           <div
             class="agenda-card-rect"
@@ -723,7 +722,7 @@
             "
           >
             <div class="num" style="color: var(--accent-orange)">06</div>
-            <h3>Evaluación Crítica (FODA)</h3>
+            <h3>Mapeo Canvas Completo</h3>
           </div>
           <div
             class="agenda-card-rect"
@@ -1237,6 +1236,7 @@
         </div>
       </div>
     </div>
+
     <!-- SLIDE 11: SEGMENTOS DE MERCADO -->
     <div
       class="slide-container"
@@ -1305,7 +1305,8 @@
         </div>
       </div>
     </div>
-    <!-- SLIDE 13: PROPUESTA DE VALOR -->
+
+    <!-- SLIDE 12: PROPUESTA DE VALOR -->
     <div
       class="slide-container"
       id="slide12"
@@ -1850,10 +1851,463 @@
       </div>
     </div>
 
-    <!-- SLIDE 19: RELACIÓN SITIO WEB Y NEGOCIO -->
+    <!-- SLIDE 19: BUSINESS MODEL CANVAS VISUAL INTEGRAL -->
     <div
       class="slide-container"
       id="slide19"
+      data-topic="Mapeo Canvas Completo"
+      data-icon="fa-table"
+      data-color="var(--accent-orange)"
+    >
+      <div class="content-area" style="padding-top: 60px">
+        <div class="slide-title" style="margin-bottom: 20px">
+          <div
+            class="slide-number-square"
+            style="
+              background-color: var(--accent-orange);
+              border-bottom-color: var(--primary-green);
+            "
+          >
+            08
+          </div>
+          BUSINESS MODEL CANVAS (BMC)
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: 1fr 1fr 0.8fr;
+            gap: 15px;
+            height: 100%;
+            padding-bottom: 40px;
+          "
+        >
+          <!-- Socios Clave -->
+          <div
+            class="rect-tile"
+            style="grid-column: 1 / 3; grid-row: 1 / 3; padding: 20px"
+          >
+            <h4
+              style="
+                font-size: 16px;
+                color: var(--accent-blue);
+                margin-bottom: 15px;
+                text-transform: none;
+              "
+            >
+              <i class="fa-solid fa-handshake-angle"></i> Socios Clave
+            </h4>
+            <ul class="highlight-list" style="font-size: 13px">
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Visa, Mastercard, ACH.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Proveedores Cloud.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Ciberseguridad.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Reguladores.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Actividades Clave -->
+          <div
+            class="rect-tile"
+            style="grid-column: 3 / 5; grid-row: 1 / 2; padding: 20px"
+          >
+            <h4
+              style="
+                font-size: 16px;
+                color: var(--accent-blue);
+                margin-bottom: 15px;
+                text-transform: none;
+              "
+            >
+              <i class="fa-solid fa-cogs"></i> Actividades Clave
+            </h4>
+            <ul class="highlight-list" style="font-size: 13px">
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Procesamiento seguro.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Mantenimiento IT.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Marketing digital.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Recursos Clave -->
+          <div
+            class="rect-tile"
+            style="grid-column: 3 / 5; grid-row: 2 / 3; padding: 20px"
+          >
+            <h4
+              style="
+                font-size: 16px;
+                color: var(--accent-blue);
+                margin-bottom: 15px;
+                text-transform: none;
+              "
+            >
+              <i class="fa-solid fa-server"></i> Recursos Clave
+            </h4>
+            <ul class="highlight-list" style="font-size: 13px">
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Infraestructura Cloud.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Core Bancario.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Personal IT.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Propuesta de Valor -->
+          <div
+            class="rect-tile solid-green"
+            style="
+              grid-column: 5 / 7;
+              grid-row: 1 / 3;
+              padding: 20px;
+              text-align: center;
+            "
+          >
+            <h4
+              style="
+                font-size: 18px;
+                color: var(--bg-black);
+                margin-bottom: 15px;
+                text-transform: none;
+              "
+            >
+              <i class="fa-solid fa-gem"></i> Propuesta de Valor
+            </h4>
+            <p
+              style="
+                font-size: 14px;
+                color: white;
+                line-height: 1.4;
+                margin-bottom: 15px;
+              "
+            >
+              Experiencia bancaria centralizada, segura y disponible 24/7.
+            </p>
+            <div
+              style="
+                background-color: var(--bg-black);
+                padding: 10px;
+                border-radius: 8px;
+              "
+            >
+              <ul
+                style="
+                  font-size: 13px;
+                  color: white;
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                  text-align: left;
+                "
+              >
+                <li style="margin-bottom: 5px">⚡ Inmediatez operativa</li>
+                <li style="margin-bottom: 5px">🔒 Seguridad garantizada</li>
+                <li>📲 Autoservicio total</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Relación con Clientes -->
+          <div
+            class="rect-tile"
+            style="grid-column: 7 / 9; grid-row: 1 / 2; padding: 20px"
+          >
+            <h4
+              style="
+                font-size: 16px;
+                color: var(--accent-blue);
+                margin-bottom: 15px;
+                text-transform: none;
+              "
+            >
+              <i class="fa-solid fa-heart"></i> Relaciones
+            </h4>
+            <ul class="highlight-list" style="font-size: 13px">
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Autoservicio digital.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Soporte híbrido (IA).
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Omnicanalidad.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Canales -->
+          <div
+            class="rect-tile"
+            style="grid-column: 7 / 9; grid-row: 2 / 3; padding: 20px"
+          >
+            <h4
+              style="
+                font-size: 16px;
+                color: var(--accent-blue);
+                margin-bottom: 15px;
+                text-transform: none;
+              "
+            >
+              <i class="fa-solid fa-satellite-dish"></i> Canales
+            </h4>
+            <ul class="highlight-list" style="font-size: 13px">
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Portal Web.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                App Móvil.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Contact Center.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Segmentos de Mercado -->
+          <div
+            class="rect-tile"
+            style="grid-column: 9 / 11; grid-row: 1 / 3; padding: 20px"
+          >
+            <h4
+              style="
+                font-size: 16px;
+                color: var(--accent-blue);
+                margin-bottom: 15px;
+                text-transform: none;
+              "
+            >
+              <i class="fa-solid fa-users"></i> Segmentos
+            </h4>
+            <ul class="highlight-list" style="font-size: 13px">
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Personas Físicas.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                PYMES.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Corporativos.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Nativos Digitales.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Estructura de Costes -->
+          <div
+            class="rect-tile"
+            style="grid-column: 1 / 6; grid-row: 3 / 4; padding: 20px"
+          >
+            <h4
+              style="
+                font-size: 16px;
+                color: var(--accent-orange);
+                margin-bottom: 10px;
+                text-transform: none;
+              "
+            >
+              <i class="fa-solid fa-money-bill-wave"></i> Estructura de Costes
+            </h4>
+            <ul
+              class="highlight-list"
+              style="
+                font-size: 13px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5px;
+              "
+            >
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Servidores y Cloud.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Licencias de Core.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Nómina de Seguridad.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Marketing Digital.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Flujo de Ingresos -->
+          <div
+            class="rect-tile"
+            style="grid-column: 6 / 11; grid-row: 3 / 4; padding: 20px"
+          >
+            <h4
+              style="
+                font-size: 16px;
+                color: var(--primary-green);
+                margin-bottom: 10px;
+                text-transform: none;
+              "
+            >
+              <i class="fa-solid fa-sack-dollar"></i> Flujo de Ingresos
+            </h4>
+            <ul
+              class="highlight-list"
+              style="
+                font-size: 13px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5px;
+              "
+            >
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Comisiones transaccionales.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Intereses de préstamos.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Suscripción nómina.
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-check"
+                  style="font-size: 12px; top: 2px"
+                ></i>
+                Pago de servicios.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 20: RELACIÓN SITIO WEB Y NEGOCIO -->
+    <div
+      class="slide-container"
+      id="slide20"
       data-topic="Alineación Estratégica"
       data-icon="fa-network-wired"
       data-color="var(--accent-orange)"
@@ -1867,7 +2321,7 @@
               border-bottom-color: var(--primary-green);
             "
           >
-            07
+            09
           </div>
           SITIO WEB VS NEGOCIO
         </div>
@@ -2073,18 +2527,18 @@
       </div>
     </div>
 
-    <!-- SLIDE 20: CONCLUSIÓN FINAL -->
+    <!-- SLIDE 21: CONCLUSIÓN FINAL -->
     <div
       class="slide-container"
-      id="slide20"
+      id="slide21"
       data-topic="Conclusiones"
       data-icon="fa-flag-checkered"
       data-color="var(--primary-green)"
     >
       <div class="content-area" style="padding-top: 60px">
         <div class="slide-title">
-          <div class="slide-number-square">08</div>
-          CONCLUSIONES ACADÉMICAS
+          <div class="slide-number-square">10</div>
+          CONCLUSIONES
         </div>
         <div
           class="rect-tile solid-green"
@@ -2122,10 +2576,10 @@
       </div>
     </div>
 
-    <!-- SLIDE 21: CIERRE -->
+    <!-- SLIDE 22: CIERRE -->
     <div
       class="slide-container"
-      id="slide21"
+      id="slide22"
       style="padding: 0"
       data-topic="Fin de la Presentación"
       data-icon="fa-power-off"
