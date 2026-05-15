@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banco BHD - Análisis y Modelo de Negocio Digital</title>
+    <title>Banco BHD - Análisis y Modelo de Negocio Digital (Print)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -56,7 +56,6 @@
         width: min(1280px, 96vw);
         max-width: 96vw;
         height: min(720px, 96vh);
-        max-height: 96vh;
         background-color: var(--bg-black);
         position: absolute;
         top: 50%;
@@ -575,6 +574,72 @@
         font-size: 16px;
       }
     </style>
+
+    <!-- Overrides para versión de impresión/apilada -->
+    <style>
+      /* Hacer que la página sea desplazable y que las diapositivas se apilen */
+      body {
+        overflow: visible !important;
+        width: auto !important;
+        height: auto !important;
+        min-height: 100vh;
+        padding: 24px 0;
+      }
+
+      /* Ocultar controles interactivos */
+      .presentation-controls,
+      .presentation-topic {
+        display: none !important;
+      }
+
+      /* Forzar que todas las slides se muestren como contenedores apilados */
+      .slide-container {
+        position: relative !important;
+        transform: none !important;
+        top: auto !important;
+        left: auto !important;
+        margin: 28px auto !important;
+        width: min(1280px, 96vw) !important;
+        max-width: 96vw !important;
+        height: 720px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        z-index: 1 !important;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6) !important;
+        transition: none !important;
+        overflow: hidden !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      /* Mantener estructuras internas basadas en 100% */
+      .split-layout,
+      .split-content,
+      .content-area {
+        height: 100%;
+      }
+
+      /* Ajustes para impresión */
+      @media print {
+        body {
+          padding: 0;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .slide-container {
+          page-break-after: always;
+          break-after: page;
+          box-shadow: none;
+          margin: 0;
+          width: 100%;
+          max-width: 100%;
+          height: auto !important;
+        }
+        .slide-container .content-area {
+          padding: 40px !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- UI GLOBAL: INDICADOR DE TEMA (Izquierda) -->
@@ -702,7 +767,7 @@
             "
           >
             <div class="num" style="color: var(--accent-blue)">04</div>
-            <h3>Análisis del Modelo (BMC)</h3>
+            <h3>Business Model Canvas</h3>
           </div>
           <div
             class="agenda-card-rect"
@@ -712,7 +777,7 @@
             "
           >
             <div class="num" style="color: var(--accent-blue)">05</div>
-            <h3>Evaluación Crítica (FODA)</h3>
+            <h3>Mapeo de Bloques (BMC)</h3>
           </div>
           <div
             class="agenda-card-rect"
@@ -722,7 +787,7 @@
             "
           >
             <div class="num" style="color: var(--accent-orange)">06</div>
-            <h3>Mapeo Canvas Completo</h3>
+            <h3>Evaluación Crítica (FODA)</h3>
           </div>
           <div
             class="agenda-card-rect"
@@ -1048,7 +1113,6 @@
         </div>
       </div>
     </div>
-
     <!-- SLIDE 8: ESTRUCTURA VISUAL (DIAGRAMA) -->
     <div
       class="slide-container"
@@ -1115,11 +1179,10 @@
         </div>
       </div>
     </div>
-
-    <!-- SLIDE 9: TRANSICIÓN A CANVAS -->
+    <!-- SLIDE 8: TRANSICIÓN A CANVAS -->
     <div
       class="slide-container"
-      id="slide9"
+      id="slide8"
       style="padding: 0"
       data-topic="Transición a Fase II"
       data-icon="fa-forward-step"
@@ -1170,10 +1233,10 @@
       </div>
     </div>
 
-    <!-- SLIDE 10: TIPO DE SITIO WEB -->
+    <!-- SLIDE 9: TIPO DE SITIO WEB -->
     <div
       class="slide-container"
-      id="slide10"
+      id="slide9"
       data-topic="Tipo de Sitio Web"
       data-icon="fa-globe"
       data-color="var(--accent-blue)"
@@ -1237,79 +1300,10 @@
       </div>
     </div>
 
-    <!-- SLIDE 11: SEGMENTOS DE MERCADO -->
+    <!-- SLIDE 10: PROPUESTA DE VALOR -->
     <div
       class="slide-container"
-      id="slide11"
-      data-topic="Segmentos de Mercado"
-      data-icon="fa-users"
-      data-color="var(--accent-blue)"
-    >
-      <div
-        class="left-green-anchor"
-        style="background-color: var(--accent-blue)"
-      ></div>
-      <div class="content-area" style="padding-left: 120px; padding-top: 60px">
-        <div class="slide-title">
-          <div
-            class="slide-number-square"
-            style="background-color: var(--accent-blue)"
-          >
-            05
-          </div>
-          SEGMENTOS DE MERCADO
-        </div>
-        <p style="margin-bottom: 30px; font-size: 18px">
-          Clasificación estructural de los perfiles de usuarios a los que se
-          dirige la plataforma:
-        </p>
-
-        <div class="rect-grid-2" style="gap: 30px">
-          <div
-            class="rect-tile"
-            style="border-top: 4px solid var(--accent-blue)"
-          >
-            <h3>Personas físicas</h3>
-            <p>
-              Usuarios individuales y familias que gestionan finanzas
-              personales.
-            </p>
-          </div>
-          <div
-            class="rect-tile"
-            style="border-top: 4px solid var(--accent-orange)"
-          >
-            <h3>PYMES</h3>
-            <p>
-              Pequeñas y medianas empresas que requieren agilidad en cobros y
-              pagos.
-            </p>
-          </div>
-          <div
-            class="rect-tile"
-            style="border-top: 4px solid var(--primary-green)"
-          >
-            <h3>Clientes corporativos</h3>
-            <p>
-              Empresas de gran escala con necesidades complejas de tesorería e
-              inversión.
-            </p>
-          </div>
-          <div class="rect-tile solid-green">
-            <h3 style="color: var(--bg-black)">Clientes digitales</h3>
-            <p>
-              Usuarios nativos que operan exclusiva y prioritariamente mediante
-              canales electrónicos.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 12: PROPUESTA DE VALOR -->
-    <div
-      class="slide-container"
-      id="slide12"
+      id="slide10"
       data-topic="Propuesta de Valor"
       data-icon="fa-gem"
       data-color="var(--accent-blue)"
@@ -1320,7 +1314,7 @@
             class="slide-number-square"
             style="background-color: var(--accent-blue)"
           >
-            06
+            05
           </div>
           PROPUESTA DE VALOR
         </div>
@@ -1452,10 +1446,79 @@
       </div>
     </div>
 
-    <!-- SLIDE 13: CARTERA DE CLIENTES -->
+    <!-- SLIDE 11: SEGMENTOS DE MERCADO -->
     <div
       class="slide-container"
-      id="slide13"
+      id="slide11"
+      data-topic="Segmentos de Mercado"
+      data-icon="fa-users"
+      data-color="var(--accent-blue)"
+    >
+      <div
+        class="left-green-anchor"
+        style="background-color: var(--accent-blue)"
+      ></div>
+      <div class="content-area" style="padding-left: 120px; padding-top: 60px">
+        <div class="slide-title">
+          <div
+            class="slide-number-square"
+            style="background-color: var(--accent-blue)"
+          >
+            06
+          </div>
+          SEGMENTOS DE MERCADO
+        </div>
+        <p style="margin-bottom: 30px; font-size: 18px">
+          Clasificación estructural de los perfiles de usuarios a los que se
+          dirige la plataforma:
+        </p>
+
+        <div class="rect-grid-2" style="gap: 30px">
+          <div
+            class="rect-tile"
+            style="border-top: 4px solid var(--accent-blue)"
+          >
+            <h3>Personas físicas</h3>
+            <p>
+              Usuarios individuales y familias que gestionan finanzas
+              personales.
+            </p>
+          </div>
+          <div
+            class="rect-tile"
+            style="border-top: 4px solid var(--accent-orange)"
+          >
+            <h3>PYMES</h3>
+            <p>
+              Pequeñas y medianas empresas que requieren agilidad en cobros y
+              pagos.
+            </p>
+          </div>
+          <div
+            class="rect-tile"
+            style="border-top: 4px solid var(--primary-green)"
+          >
+            <h3>Clientes corporativos</h3>
+            <p>
+              Empresas de gran escala con necesidades complejas de tesorería e
+              inversión.
+            </p>
+          </div>
+          <div class="rect-tile solid-green">
+            <h3 style="color: var(--bg-black)">Clientes digitales</h3>
+            <p>
+              Usuarios nativos que operan exclusiva y prioritariamente mediante
+              canales electrónicos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: CARTERA DE CLIENTES -->
+    <div
+      class="slide-container"
+      id="slide12"
       data-topic="Cartera de Clientes"
       data-icon="fa-briefcase"
       data-color="var(--accent-blue)"
@@ -1510,10 +1573,10 @@
       </div>
     </div>
 
-    <!-- SLIDE 14: RELACIONES Y CANALES -->
+    <!-- SLIDE 13: RELACIONES Y CANALES -->
     <div
       class="slide-container"
-      id="slide14"
+      id="slide13"
       data-topic="Relaciones con Clientes"
       data-icon="fa-handshake"
       data-color="var(--accent-blue)"
@@ -1585,10 +1648,10 @@
       </div>
     </div>
 
-    <!-- SLIDE 15: ACTIVIDADES Y RECURSOS CLAVE -->
+    <!-- SLIDE 14: ACTIVIDADES Y RECURSOS CLAVE -->
     <div
       class="slide-container"
-      id="slide15"
+      id="slide14"
       data-topic="Actividades Clave"
       data-icon="fa-cogs"
       data-color="var(--accent-blue)"
@@ -1640,10 +1703,10 @@
       </div>
     </div>
 
-    <!-- SLIDE 16: SOCIOS CLAVE -->
+    <!-- SLIDE 15: SOCIOS CLAVE -->
     <div
       class="slide-container"
-      id="slide16"
+      id="slide15"
       data-topic="Socios Clave"
       data-icon="fa-handshake-angle"
       data-color="var(--accent-blue)"
@@ -2625,105 +2688,5 @@
         </div>
       </div>
     </div>
-
-    <!-- SCRIPT DE NAVEGACIÓN Y ESCALADO (SLIDESHOW) -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const slides = document.querySelectorAll(".slide-container");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-        const counter = document.getElementById("slideCounter");
-
-        // Elementos de la UI Global (Tema/Topic)
-        const topicContainer = document.getElementById("presentationTopic");
-        const topicText = document.getElementById("topicText");
-        const topicIcon = document.getElementById("topicIcon");
-
-        let currentIndex = 0;
-
-        // Función para actualizar qué slide está activo y su respectiva información
-        function updateSlides() {
-          slides.forEach((slide, index) => {
-            if (index === currentIndex) {
-              slide.classList.add("active");
-
-              // Extraer datos del Slide Activo para el Footer
-              const currentTopic = slide.getAttribute("data-topic");
-              const currentIcon =
-                slide.getAttribute("data-icon") || "fa-microphone-lines";
-              const currentColor =
-                slide.getAttribute("data-color") || "var(--accent-orange)";
-
-              // Animar la transición del texto cambiándolo suavemente
-              topicText.style.opacity = "0";
-              setTimeout(() => {
-                topicText.textContent = currentTopic;
-                topicIcon.className = `fa-solid ${currentIcon}`;
-                topicIcon.style.color = currentColor;
-                topicContainer.style.borderLeftColor = currentColor;
-
-                topicText.style.opacity = "1";
-              }, 150);
-            } else {
-              slide.classList.remove("active");
-            }
-          });
-
-          // Actualizar el contador y estado de los botones
-          counter.textContent = `${currentIndex + 1} / ${slides.length}`;
-          prevBtn.disabled = currentIndex === 0;
-          nextBtn.disabled = currentIndex === slides.length - 1;
-        }
-
-        // Lógica de botones
-        prevBtn.addEventListener("click", () => {
-          if (currentIndex > 0) {
-            currentIndex--;
-            updateSlides();
-          }
-        });
-
-        nextBtn.addEventListener("click", () => {
-          if (currentIndex < slides.length - 1) {
-            currentIndex++;
-            updateSlides();
-          }
-        });
-
-        // Lógica del teclado (flechas)
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "ArrowRight" || e.key === " ") {
-            if (currentIndex < slides.length - 1) {
-              currentIndex++;
-              updateSlides();
-            }
-          } else if (e.key === "ArrowLeft") {
-            if (currentIndex > 0) {
-              currentIndex--;
-              updateSlides();
-            }
-          }
-        });
-
-        // Lógica de Autocálculo de Escala (Responsividad)
-        function resizePresentation() {
-          const targetWidth = 1280;
-          const targetHeight = 720;
-          const scaleX = window.innerWidth / targetWidth;
-          const scaleY = window.innerHeight / targetHeight;
-          const scale = Math.min(scaleX, scaleY) * 0.95;
-
-          slides.forEach((slide) => {
-            slide.style.transform = `translate(-50%, -50%) scale(${scale})`;
-          });
-        }
-
-        window.addEventListener("resize", resizePresentation);
-
-        // Inicializar
-        resizePresentation();
-        updateSlides();
-      });
-    </script>
   </body>
 </html>
