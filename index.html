@@ -1,0 +1,2169 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BHD BANK - Análisis y Modelo de Negocio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        /* --- 1. CORE VARIABLES & SETUP --- */
+
+        :root {
+
+            --primary-green: #0b793b;
+
+            --accent-orange: #fc642f;
+
+            --accent-blue: #4e74e8;
+
+            
+
+            --bg-black: #050505;
+
+            --bg-dark-gray: #121212;
+
+            --border-color: #2a2a2a;
+
+            
+
+            --text-white: #ffffff;
+
+            --text-gray: #a3a3a3;
+
+        }
+
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        body {
+
+            background-color: #1a1a1a;
+
+            display: grid;
+
+            gap: 40px;
+
+            padding: 40px 0;
+
+            place-items: center;
+
+        }
+
+
+        .slide-container {
+
+            width: 1280px;
+
+            height: 720px;
+
+            background-color: var(--bg-black);
+
+            font-family: 'Inter', sans-serif;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+            color: var(--text-white);
+
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+
+            border-radius: 0; 
+
+        }
+
+
+        /* --- 2. TYPOGRAPHY --- */
+
+        h1, h2, h3, h4 {
+
+            font-family: 'Space Grotesk', sans-serif;
+
+            font-weight: 700;
+
+            letter-spacing: -0.02em;
+
+            color: var(--text-white);
+
+            text-transform: uppercase;
+
+        }
+
+
+        p, li {
+
+            color: var(--text-gray);
+
+            line-height: 1.6;
+
+        }
+
+
+        .slide-title {
+
+            font-size: 45px;
+
+            margin-bottom: 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            position: relative;
+
+            z-index: 10;
+
+        }
+
+
+        .slide-number-square {
+
+            background-color: var(--primary-green);
+
+            color: var(--text-white);
+
+            width: 60px;
+
+            height: 60px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+            border-bottom: 4px solid var(--accent-orange);
+
+        }
+
+
+        .content-area {
+
+            flex-grow: 1;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            width: 100%;
+
+            position: relative;
+
+            z-index: 10;
+
+            padding: 0 80px;
+
+        }
+
+
+        /* --- 3. RECTANGULAR LAYOUTS --- */
+
+        
+
+        .split-layout {
+
+            display: flex;
+
+            width: 100%;
+
+            height: 100%;
+
+        }
+
+        
+
+        .split-left {
+
+            width: 40%;
+
+            background-color: var(--primary-green);
+
+            padding: 80px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            position: relative;
+
+        }
+
+
+        .split-left::after {
+
+            content: '';
+
+            position: absolute;
+
+            top: 80px;
+
+            right: 0;
+
+            width: 10px;
+
+            height: 100px;
+
+            background-color: var(--accent-orange);
+
+        }
+
+        
+
+        .split-right {
+
+            width: 60%;
+
+            background-color: var(--bg-black);
+
+            padding: 80px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            position: relative;
+
+        }
+
+
+        .title-main {
+
+            font-size: 85px;
+
+            line-height: 1;
+
+            margin-bottom: 20px;
+
+            color: var(--text-white);
+
+        }
+
+        
+
+        .title-sub {
+
+            font-size: 24px;
+
+            color: var(--text-gray);
+
+            font-family: 'Inter', sans-serif;
+
+            font-weight: 400;
+
+            text-transform: none;
+
+            border-left: 4px solid var(--accent-blue);
+
+            padding-left: 20px;
+
+        }
+
+
+        .team-grid-strict {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 30px;
+
+            margin-top: 60px;
+
+        }
+
+
+        .team-box {
+
+            background-color: var(--bg-dark-gray);
+
+            border: 1px solid var(--border-color);
+
+            padding: 20px;
+
+            border-left: 4px solid var(--primary-green);
+
+        }
+
+
+        .team-box .name { font-size: 16px; font-weight: 700; color: var(--text-white); display: block; margin-bottom: 5px; }
+
+        .team-box .id { font-size: 14px; color: var(--accent-orange); font-family: monospace; }
+
+
+        /* Modified Agenda Grid (4 columns for extended content) */
+
+        .top-green-block {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 40%;
+
+            background-color: var(--primary-green);
+
+            z-index: 1;
+
+        }
+
+
+        .agenda-grid-rect {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+
+            width: 100%;
+
+        }
+
+
+        .agenda-card-rect {
+
+            background-color: var(--bg-black);
+
+            border: 1px solid var(--border-color);
+
+            padding: 30px 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+
+            position: relative;
+
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+
+        }
+
+
+        .agenda-card-rect::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: -1px;
+
+            left: -1px;
+
+            width: 30px;
+
+            height: 30px;
+
+            border-top: 4px solid var(--accent-orange);
+
+            border-left: 4px solid var(--accent-orange);
+
+        }
+
+
+        .agenda-card-rect .num {
+
+            font-family: 'Space Grotesk', sans-serif;
+
+            font-size: 32px;
+
+            font-weight: 700;
+
+            color: var(--primary-green);
+
+            line-height: 1;
+
+        }
+
+        
+
+        .agenda-card-rect h3 {
+
+            font-size: 16px;
+
+        }
+
+
+        .split-content {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            height: 100%;
+
+            width: 100%;
+
+        }
+
+
+        .split-green-pane {
+
+            background-color: var(--primary-green);
+
+            padding: 80px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+        .split-black-pane {
+
+            background-color: var(--bg-black);
+
+            padding: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .strict-image-frame {
+
+            width: 100%;
+
+            height: 100%;
+
+            border: 10px solid var(--bg-dark-gray);
+
+            position: relative;
+
+        }
+
+
+        .strict-image-frame::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: -20px;
+
+            right: -20px;
+
+            width: 100px;
+
+            height: 100px;
+
+            border-right: 8px solid var(--accent-blue);
+
+            border-bottom: 8px solid var(--accent-blue);
+
+            pointer-events: none;
+
+        }
+
+
+        .strict-image-frame img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            filter: grayscale(30%) contrast(1.1);
+
+        }
+
+
+        .rect-grid-3 {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 30px;
+
+            width: 100%;
+
+        }
+
+
+        .rect-grid-2 {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 40px;
+
+            width: 100%;
+
+        }
+
+
+        .rect-tile {
+
+            background-color: var(--bg-dark-gray);
+
+            border: 1px solid var(--border-color);
+
+            padding: 40px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            position: relative;
+
+        }
+
+
+        .rect-tile.solid-green {
+
+            background-color: var(--primary-green);
+
+            border-color: var(--primary-green);
+
+        }
+
+
+        .rect-tile.solid-green p, .rect-tile.solid-green li {
+
+            color: rgba(255,255,255,0.9);
+
+        }
+
+
+        .rect-tile .icon-square {
+
+            width: 50px;
+
+            height: 50px;
+
+            background-color: var(--bg-black);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 24px;
+
+            color: var(--primary-green);
+
+            margin-bottom: 30px;
+
+            border: 1px solid var(--border-color);
+
+        }
+
+
+        .rect-tile.solid-green .icon-square {
+
+            background-color: var(--bg-black);
+
+            color: var(--text-white);
+
+            border-color: var(--bg-black);
+
+        }
+
+
+        .rect-tile h3 {
+
+            font-size: 22px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .rect-tile ul {
+
+            list-style: none;
+
+            margin-top: 15px;
+
+        }
+
+
+        .rect-tile ul li {
+
+            position: relative;
+
+            padding-left: 20px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .rect-tile ul li::before {
+
+            content: '';
+
+            position: absolute;
+
+            left: 0;
+
+            top: 8px;
+
+            width: 8px;
+
+            height: 8px;
+
+            background-color: var(--accent-orange);
+
+        }
+
+
+        .rect-tile.solid-green ul li::before {
+
+            background-color: var(--accent-blue);
+
+        }
+
+
+        .strip-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
+
+            width: 100%;
+
+            max-width: 1000px;
+
+        }
+
+
+        .strip-item {
+
+            display: flex;
+
+            background-color: var(--bg-dark-gray);
+
+            border: 1px solid var(--border-color);
+
+            min-height: 80px;
+
+        }
+
+
+        .strip-header {
+
+            width: 250px;
+
+            background-color: var(--primary-green);
+
+            color: var(--text-white);
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 20px 30px;
+
+            font-family: 'Space Grotesk', sans-serif;
+
+            font-weight: 700;
+
+            font-size: 18px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .strip-body {
+
+            flex-grow: 1;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 20px 30px;
+
+            font-size: 18px;
+
+            color: var(--text-gray);
+
+        }
+
+
+        .left-green-anchor {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 80px;
+
+            height: 100%;
+
+            background-color: var(--primary-green);
+
+            z-index: 1;
+
+        }
+
+
+        .massive-grid {
+
+            position: absolute;
+
+            top: 0; left: 0; width: 100%; height: 100%;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            grid-template-rows: 1fr 1fr;
+
+            z-index: 5;
+
+        }
+
+
+        .massive-block {
+
+            padding: 60px 80px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            position: relative;
+
+        }
+
+
+        .massive-block.black { background-color: var(--bg-black); border: 1px solid var(--border-color); }
+
+        .massive-block.green { background-color: var(--primary-green); }
+
+
+        .massive-block .massive-num {
+
+            position: absolute;
+
+            top: 40px;
+
+            right: 40px;
+
+            font-family: 'Space Grotesk', sans-serif;
+
+            font-size: 80px;
+
+            font-weight: 700;
+
+            opacity: 0.1;
+
+        }
+
+
+        .center-block-layout {
+
+            background-color: var(--primary-green);
+
+            width: 100%;
+
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .center-black-box {
+
+            background-color: var(--bg-black);
+
+            padding: 80px 100px;
+
+            text-align: center;
+
+            border-bottom: 10px solid var(--accent-orange);
+
+            border-right: 10px solid var(--accent-blue);
+
+        }
+
+
+        .footer-stamp {
+
+            position: absolute;
+
+            bottom: 40px;
+
+            right: 80px;
+
+            font-size: 14px;
+
+            font-family: 'Space Grotesk', sans-serif;
+
+            font-weight: 700;
+
+            color: var(--text-gray);
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.1em;
+
+            z-index: 100;
+
+        }
+
+        
+
+        /* Specific tag for Business Canvas */
+
+        .canvas-tag {
+
+            display: inline-block;
+
+            background-color: var(--accent-blue);
+
+            color: var(--text-white);
+
+            padding: 5px 15px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            margin-bottom: 15px;
+
+            text-transform: uppercase;
+
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- SLIDE 1: PORTADA -->
+
+<div class="slide-container" id="slide1">
+
+    <div class="split-layout">
+
+        <div class="split-left">
+
+            <h2 style="font-size: 24px; letter-spacing: 0.2em; color: var(--bg-black);">BHD BANK</h2>
+
+            
+
+            <div style="margin-top: auto;">
+
+                <div style="width: 50px; height: 50px; background-color: var(--bg-black); margin-bottom: 20px;"></div>
+
+                <p style="color: var(--bg-black); font-weight: 700; font-family: 'Space Grotesk', sans-serif;">ANÁLISIS Y DISEÑO DE SISTEMAS</p>
+
+                <p style="color: var(--text-white); font-size: 14px;">2025 // REPUBLICA DOMINICANA</p>
+
+            </div>
+
+        </div>
+
+        <div class="split-right">
+
+            <h1 class="title-main">SITIO WEB<br>BHD</h1>
+
+            <p class="title-sub">Estructura Funcional y Modelo de Negocio (Canvas)</p>
+
+            
+
+            <div class="team-grid-strict">
+
+                <div class="team-box"><span class="name">Elvis Paez</span><span class="id">A00082603</span></div>
+
+                <div class="team-box"><span class="name">Andy Peña</span><span class="id">A00113929</span></div>
+
+                <div class="team-box"><span class="name">Robert Batista</span><span class="id">A00111345</span></div>
+
+                <div class="team-box"><span class="name">Pedro Garcia</span><span class="id">A00121080</span></div>
+
+                <div class="team-box"><span class="name">Jesus Garcia</span><span class="id">A00118637</span></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SLIDE 2: AGENDA EXPANDIDA -->
+
+<div class="slide-container" id="slide2">
+
+    <div class="top-green-block"></div>
+
+    <div class="content-area" style="padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square">AG</div>
+
+            CONTENIDO DE LA PRESENTACIÓN
+
+        </div>
+
+        
+
+        <div class="agenda-grid-rect" style="margin-top: 20px;">
+
+            <div class="agenda-card-rect">
+
+                <div class="num">01</div><h3>Objetivo General</h3>
+
+            </div>
+
+            <div class="agenda-card-rect">
+
+                <div class="num">02</div><h3>Objetivos Específicos</h3>
+
+            </div>
+
+            <div class="agenda-card-rect">
+
+                <div class="num">03</div><h3>Estructura Funcional</h3>
+
+            </div>
+
+            <div class="agenda-card-rect">
+
+                <div class="num">04</div><h3>Secciones del Sitio</h3>
+
+            </div>
+
+            
+
+            <!-- FASE II -->
+
+            <div class="agenda-card-rect" style="border-top-color: var(--accent-blue); border-left-color: var(--accent-blue);">
+
+                <div class="num" style="color: var(--accent-blue);">05</div><h3>Sitio & Propuesta</h3>
+
+            </div>
+
+            <div class="agenda-card-rect" style="border-top-color: var(--accent-blue); border-left-color: var(--accent-blue);">
+
+                <div class="num" style="color: var(--accent-blue);">06</div><h3>Clientes & Canales</h3>
+
+            </div>
+
+            <div class="agenda-card-rect" style="border-top-color: var(--accent-blue); border-left-color: var(--accent-blue);">
+
+                <div class="num" style="color: var(--accent-blue);">07</div><h3>Recursos & Socios</h3>
+
+            </div>
+
+            <div class="agenda-card-rect" style="border-top-color: var(--accent-blue); border-left-color: var(--accent-blue);">
+
+                <div class="num" style="color: var(--accent-blue);">08</div><h3>Costes & Ingresos</h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // ESTRUCTURA EJECUTIVA</div>
+
+</div>
+
+
+<!-- ========================================== -->
+
+<!-- FASE I: ESTRUCTURA FUNCIONAL (DIAPOSITIVAS ORIGINALES) -->
+
+<!-- ========================================== -->
+
+
+<!-- SLIDE 3: OBJETIVO GENERAL -->
+
+<div class="slide-container" id="slide3">
+
+    <div class="split-content">
+
+        <div class="split-green-pane">
+
+            <div class="slide-title" style="margin-bottom: 60px;">
+
+                <div class="slide-number-square" style="background-color: var(--bg-black); color: var(--primary-green); border-bottom-color: var(--text-white);">01</div>
+
+                OBJETIVO GENERAL
+
+            </div>
+
+            <h3 style="font-size: 32px; margin-bottom: 30px; text-transform: none; color: var(--bg-black);">Visión Estratégica de la Plataforma Digital</h3>
+
+            <p style="font-size: 20px; line-height: 1.6; color: var(--text-white);">Ofrecer una plataforma digital integral que permita a clientes y usuarios acceder a productos y servicios financieros, realizar operaciones en línea y obtener información institucional, de manera segura, ágil y centrada en el cliente.</p>
+
+            
+
+            <div style="display: flex; gap: 15px; margin-top: 40px;">
+
+                <div style="padding: 10px 20px; background-color: var(--bg-black); color: var(--text-white); font-weight: 700;">SEGURIDAD</div>
+
+                <div style="padding: 10px 20px; background-color: var(--accent-orange); color: var(--bg-black); font-weight: 700;">AGILIDAD</div>
+
+            </div>
+
+        </div>
+
+        <div class="split-black-pane">
+
+            <div class="strict-image-frame">
+
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/4905740360961611201" alt="Digital banking mobile app interface corporate green black">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SLIDE 4: OBJETIVOS I -->
+
+<div class="slide-container" id="slide4">
+
+    <div class="content-area" style="padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square">02</div>
+
+            OBJETIVOS ESPECÍFICOS (I)
+
+        </div>
+
+        
+
+        <div class="rect-grid-3" style="margin-top: 40px;">
+
+            <div class="rect-tile">
+
+                <div class="icon-square"><i class="fa-solid fa-mobile-screen"></i></div>
+
+                <h3>Servicios Digitales</h3>
+
+                <p>Facilitar el acceso al Internet Banking para realizar operaciones financieras desde cualquier lugar con total seguridad.</p>
+
+            </div>
+
+            <div class="rect-tile solid-green">
+
+                <div class="icon-square"><i class="fa-solid fa-chart-line"></i></div>
+
+                <h3>Promoción Comercial</h3>
+
+                <p>Promover y comercializar cuentas, préstamos, tarjetas e inversiones a través del portal web, ampliando el alcance del banco.</p>
+
+            </div>
+
+            <div class="rect-tile">
+
+                <div class="icon-square"><i class="fa-solid fa-shield-halved"></i></div>
+
+                <h3>Transparencia</h3>
+
+                <p>Brindar información corporativa clara: historia, misión, visión y estados financieros, fortaleciendo la confianza.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // ESTRUCTURA EJECUTIVA</div>
+
+</div>
+
+
+<!-- SLIDE 5: OBJETIVOS II -->
+
+<div class="slide-container" id="slide5">
+
+    <div class="content-area" style="padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square">02</div>
+
+            OBJETIVOS ESPECÍFICOS (II)
+
+        </div>
+
+        
+
+        <div class="rect-grid-2" style="margin-top: 40px; max-width: 900px; margin-left: auto; margin-right: auto;">
+
+            <div class="rect-tile" style="border-top: 5px solid var(--accent-orange);">
+
+                <div class="icon-square"><i class="fa-solid fa-headset"></i></div>
+
+                <h3>Atención y Soporte</h3>
+
+                <p>Ofrecer canales de contacto, localizador de sucursales y cajeros, FAQs y sistema de quejas para garantizar una experiencia completa y resolutiva.</p>
+
+            </div>
+
+            <div class="rect-tile" style="border-top: 5px solid var(--accent-blue);">
+
+                <div class="icon-square"><i class="fa-solid fa-microchip"></i></div>
+
+                <h3>Transformación Digital</h3>
+
+                <p>Impulsar la innovación y la experiencia del usuario a través de un ecosistema digital que integra la app móvil, redes sociales y la banca en línea.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 20%; background-color: var(--primary-green); z-index: 1;"></div>
+
+</div>
+
+
+<!-- SLIDE 6: ESTRUCTURA FUNCIONAL -->
+
+<div class="slide-container" id="slide6">
+
+    <div class="left-green-anchor" style="width: 20px;"></div>
+
+    <div class="content-area" style="padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square">03</div>
+
+            ESTRUCTURA FUNCIONAL GENERAL
+
+        </div>
+
+        
+
+        <div class="strip-list" style="margin-top: 30px;">
+
+            <div class="strip-item">
+
+                <div class="strip-header">01. HEADER</div>
+
+                <div class="strip-body">Logo, accesos rápidos, login a banca digital y menú principal.</div>
+
+            </div>
+
+            <div class="strip-item">
+
+                <div class="strip-header" style="background-color: var(--bg-black); border: 1px solid var(--primary-green); color: var(--primary-green);">02. NAVEGACIÓN</div>
+
+                <div class="strip-body">Inicio, Banca Digital, Productos, Corporativa, Atención, Información.</div>
+
+            </div>
+
+            <div class="strip-item">
+
+                <div class="strip-header">03. CONTENIDO</div>
+
+                <div class="strip-body">Secciones de productos, transacciones y exposición de marca.</div>
+
+            </div>
+
+            <div class="strip-item">
+
+                <div class="strip-header" style="background-color: var(--bg-black); border: 1px solid var(--primary-green); color: var(--primary-green);">04. INFORMACIÓN</div>
+
+                <div class="strip-body">Noticias, sala de prensa, promociones y ciberseguridad.</div>
+
+            </div>
+
+            <div class="strip-item">
+
+                <div class="strip-header">05. FOOTER</div>
+
+                <div class="strip-body">Políticas de privacidad, términos legales y redes sociales.</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // ESTRUCTURA EJECUTIVA</div>
+
+</div>
+
+
+<!-- SLIDE 7: SECCIONES I -->
+
+<div class="slide-container" id="slide7">
+
+    <div class="left-green-anchor"></div>
+
+    <div class="content-area" style="padding-left: 120px; padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square">04</div>
+
+            SECCIONES DEL SITIO (I)
+
+        </div>
+
+        
+
+        <div class="rect-grid-3" style="margin-top: 40px;">
+
+            <div class="rect-tile solid-green">
+
+                <div class="icon-square"><i class="fa-solid fa-house"></i></div>
+
+                <h3 style="color: var(--bg-black);">Página de Inicio</h3>
+
+                <ul>
+
+                    <li>Banner principal y ofertas</li>
+
+                    <li>Accesos rápidos (Cuentas)</li>
+
+                    <li>Productos destacados</li>
+
+                </ul>
+
+            </div>
+
+            <div class="rect-tile">
+
+                <div class="icon-square"><i class="fa-solid fa-vault"></i></div>
+
+                <h3>Banca Digital</h3>
+
+                <ul>
+
+                    <li>Consultas de saldo</li>
+
+                    <li>Transferencias</li>
+
+                    <li>Pagos de servicios</li>
+
+                </ul>
+
+            </div>
+
+            <div class="rect-tile">
+
+                <div class="icon-square"><i class="fa-solid fa-credit-card"></i></div>
+
+                <h3>Productos</h3>
+
+                <ul>
+
+                    <li>Cuentas y Tarjetas</li>
+
+                    <li>Préstamos e Hipotecas</li>
+
+                    <li>Calculadoras financieras</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // ESTRUCTURA EJECUTIVA</div>
+
+</div>
+
+
+<!-- SLIDE 8: SECCIONES II -->
+
+<div class="slide-container" id="slide8">
+
+    <div class="left-green-anchor"></div>
+
+    <div class="content-area" style="padding-left: 120px; padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square">04</div>
+
+            SECCIONES DEL SITIO (II)
+
+        </div>
+
+        
+
+        <div class="rect-grid-2" style="margin-top: 40px;">
+
+            <div class="rect-tile">
+
+                <div class="icon-square"><i class="fa-solid fa-building"></i></div>
+
+                <h3>Sección Corporativa</h3>
+
+                <ul>
+
+                    <li>Historia y trayectoria</li>
+
+                    <li>Misión, visión y valores</li>
+
+                    <li>Gobierno corporativo</li>
+
+                    <li>Estados financieros públicos</li>
+
+                </ul>
+
+            </div>
+
+            <div class="rect-tile solid-green">
+
+                <div class="icon-square"><i class="fa-solid fa-headset"></i></div>
+
+                <h3 style="color: var(--bg-black);">Atención al Cliente</h3>
+
+                <ul>
+
+                    <li>Preguntas frecuentes (FAQs)</li>
+
+                    <li>Formularios de contacto</li>
+
+                    <li>Localizador de sucursales</li>
+
+                    <li>Canal de quejas e incidencias</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // ESTRUCTURA EJECUTIVA</div>
+
+</div>
+
+
+<!-- SLIDE 9: SECCIONES III -->
+
+<div class="slide-container" id="slide9">
+
+    <div class="left-green-anchor"></div>
+
+    <div class="content-area" style="padding-left: 120px; padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square">04</div>
+
+            SECCIONES DEL SITIO (III)
+
+        </div>
+
+        
+
+        <div class="rect-grid-3" style="margin-top: 40px;">
+
+            <div class="rect-tile">
+
+                <div class="icon-square"><i class="fa-solid fa-newspaper"></i></div>
+
+                <h3>Info y Contenido</h3>
+
+                <ul>
+
+                    <li>Noticias y prensa</li>
+
+                    <li>Promociones vigentes</li>
+
+                    <li>Ciberseguridad</li>
+
+                </ul>
+
+            </div>
+
+            <div class="rect-tile">
+
+                <div class="icon-square"><i class="fa-solid fa-file-contract"></i></div>
+
+                <h3>S. Complementarios</h3>
+
+                <ul>
+
+                    <li>Tarifarios bancarios</li>
+
+                    <li>Tasas de cambio</li>
+
+                    <li>Políticas y contratos</li>
+
+                </ul>
+
+            </div>
+
+            <div class="rect-tile solid-green">
+
+                <div class="icon-square"><i class="fa-solid fa-mobile-screen-button"></i></div>
+
+                <h3 style="color: var(--bg-black);">Canales Alternos</h3>
+
+                <ul>
+
+                    <li>App móvil BHD</li>
+
+                    <li>Redes sociales</li>
+
+                    <li>Contact center 24/7</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // ESTRUCTURA EJECUTIVA</div>
+
+</div>
+
+
+
+<!-- ========================================== -->
+
+<!-- FASE II: MODELO DE NEGOCIO (BUSINESS CANVAS) -->
+
+<!-- ========================================== -->
+
+
+<!-- SLIDE 10: TRANSICIÓN A CANVAS -->
+
+<div class="slide-container" id="slide10" style="padding: 0;">
+
+    <div class="split-layout">
+
+        <div class="split-left" style="width: 25%; background-color: var(--accent-orange);">
+
+            <div style="font-size: 150px; font-weight: 700; color: var(--bg-black); opacity: 0.2; line-height: 0.8; margin-top: auto; font-family: 'Space Grotesk', sans-serif;">BMC</div>
+
+        </div>
+
+        <div class="split-right" style="width: 75%;">
+
+            <div style="padding: 10px 20px; border: 2px solid var(--text-white); display: inline-block; margin-bottom: 30px; font-weight: 700;">FASE II</div>
+
+            <h1 class="title-main" style="color: var(--primary-green); font-size: 70px;">MODELO DE<br>NEGOCIO</h1>
+
+            <p class="title-sub" style="border-left-color: var(--primary-green);">Análisis de los bloques del Business Model Canvas aplicados al portal web del Banco BHD.</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SLIDE 11: TIPO DE SITIO Y PROPUESTA DE VALOR -->
+
+<div class="slide-container" id="slide11">
+
+    <div class="content-area" style="padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square" style="background-color: var(--accent-blue);">05</div>
+
+            TIPO DE SITIO Y PROPUESTA DE VALOR
+
+        </div>
+
+        
+
+        <div class="rect-grid-2" style="margin-top: 20px;">
+
+            <!-- Tipo de Sitio -->
+
+            <div class="rect-tile">
+
+                <span class="canvas-tag">Tipo de Sitio Web</span>
+
+                <h3>Plataforma Transaccional e Informativa</h3>
+
+                <p style="margin-bottom: 20px;">El portal funciona como la puerta de acceso principal a la plataforma de <strong>autoservicio</strong> del banco. Su doble naturaleza permite:</p>
+
+                <ul>
+
+                    <li>Informar sobre la institución y generar confianza.</li>
+
+                    <li>Brindar servicios de transacciones y cobros en tiempo real.</li>
+
+                    <li>Integrar soluciones digitales para banca personal y empresarial.</li>
+
+                </ul>
+
+            </div>
+
+            
+
+            <!-- Propuesta de Valor -->
+
+            <div class="rect-tile solid-green">
+
+                <span class="canvas-tag" style="background-color: var(--bg-black);">Propuesta de Valor</span>
+
+                <h3 style="color: var(--bg-black);">Fiabilidad, Tiempo y Autonomía</h3>
+
+                <p style="color: var(--text-white); margin-bottom: 20px;">El portal entrega valor resolviendo problemas de desplazamiento y brindando control total:</p>
+
+                <ul>
+
+                    <li><strong>Disponibilidad 24/7:</strong> Acceso ininterrumpido a los fondos.</li>
+
+                    <li><strong>Ahorro de Tiempo:</strong> Evita traslados a sucursales físicas.</li>
+
+                    <li><strong>Seguridad y Fiabilidad:</strong> Transacciones cifradas y credibilidad bancaria.</li>
+
+                    <li><strong>Autonomía:</strong> Gestión de finanzas en tiempo real.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // MODELO DE NEGOCIO CANVAS</div>
+
+</div>
+
+
+<!-- SLIDE 12: SEGMENTOS DE MERCADO -->
+
+<div class="slide-container" id="slide12">
+
+    <div class="left-green-anchor" style="background-color: var(--accent-blue);"></div>
+
+    <div class="content-area" style="padding-left: 120px; padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square" style="background-color: var(--accent-blue);">06</div>
+
+            SEGMENTOS Y CARTERA DE CLIENTES
+
+        </div>
+
+        <p style="margin-bottom: 30px; font-size: 18px;">¿Para quiénes estamos creando valor a través de la plataforma web?</p>
+
+
+        <div class="rect-grid-3">
+
+            <div class="rect-tile">
+
+                <span class="canvas-tag">Banca Minorista</span>
+
+                <div class="icon-square" style="color: var(--accent-blue);"><i class="fa-solid fa-users"></i></div>
+
+                <h3>Personas Físicas</h3>
+
+                <p>Individuos y familias que requieren productos básicos y control financiero diario.</p>
+
+                <ul>
+
+                    <li>Cuentas de ahorro y corrientes.</li>
+
+                    <li>Tarjetas de crédito.</li>
+
+                    <li>Préstamos personales.</li>
+
+                </ul>
+
+            </div>
+
+            
+
+            <div class="rect-tile">
+
+                <span class="canvas-tag">Banca Comercial</span>
+
+                <div class="icon-square" style="color: var(--accent-orange);"><i class="fa-solid fa-store"></i></div>
+
+                <h3>PYMES</h3>
+
+                <p>Emprendedores y pequeños negocios que buscan agilizar sus operaciones.</p>
+
+                <ul>
+
+                    <li>Gestión de cobros y pagos.</li>
+
+                    <li>Préstamos de capital de trabajo.</li>
+
+                    <li>Manejo de flujo de caja.</li>
+
+                </ul>
+
+            </div>
+
+            
+
+            <div class="rect-tile">
+
+                <span class="canvas-tag">Banca Mayorista</span>
+
+                <div class="icon-square" style="color: var(--primary-green);"><i class="fa-solid fa-city"></i></div>
+
+                <h3>Corporativo</h3>
+
+                <p>Grandes organizaciones que necesitan soluciones financieras complejas a gran escala.</p>
+
+                <ul>
+
+                    <li>Banca de inversión.</li>
+
+                    <li>Pago masivo de nóminas.</li>
+
+                    <li>Gestión de tesorería y divisas.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // MODELO DE NEGOCIO CANVAS</div>
+
+</div>
+
+
+<!-- SLIDE 13: RELACIONES Y CANALES -->
+
+<div class="slide-container" id="slide13">
+
+    <div class="content-area" style="padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square" style="background-color: var(--accent-blue);">06</div>
+
+            RELACIONES Y CANALES
+
+        </div>
+
+        
+
+        <div class="rect-grid-2" style="margin-top: 20px;">
+
+            <!-- Relaciones -->
+
+            <div class="rect-tile" style="border-top: 5px solid var(--primary-green);">
+
+                <span class="canvas-tag">Relaciones con Clientes</span>
+
+                <h3>Escalabilidad mediante Autoservicio</h3>
+
+                <p style="margin-bottom: 20px;">El objetivo estratégico del portal es migrar a los clientes hacia canales digitales para reducir costes operativos y agilizar el servicio.</p>
+
+                <div class="strip-list" style="max-width: 100%;">
+
+                    <div class="strip-item" style="min-height: 60px;">
+
+                        <div class="strip-header" style="width: 180px; font-size: 14px; padding: 10px 20px;">AUTOSERVICIO</div>
+
+                        <div class="strip-body" style="font-size: 14px; padding: 10px 20px;">El cliente gestiona todo independientemente.</div>
+
+                    </div>
+
+                    <div class="strip-item" style="min-height: 60px;">
+
+                        <div class="strip-header" style="width: 180px; font-size: 14px; padding: 10px 20px; background-color: var(--accent-orange);">ASISTENCIA IA</div>
+
+                        <div class="strip-body" style="font-size: 14px; padding: 10px 20px;">Soporte a través de chatbots automáticos.</div>
+
+                    </div>
+
+                    <div class="strip-item" style="min-height: 60px;">
+
+                        <div class="strip-header" style="width: 180px; font-size: 14px; padding: 10px 20px; background-color: var(--accent-blue);">PERSONALIZADA</div>
+
+                        <div class="strip-body" style="font-size: 14px; padding: 10px 20px;">Chat en vivo y centro de contacto telefónico.</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+            <!-- Canales -->
+
+            <div class="rect-tile" style="border-top: 5px solid var(--accent-orange);">
+
+                <span class="canvas-tag">Canales de Distribución / Comunicación</span>
+
+                <h3>Omnicanalidad Interconectada</h3>
+
+                <p style="margin-bottom: 20px;">El portal actúa como la puerta principal, pero es parte de una red de canales que entregan la propuesta de valor de forma coherente.</p>
+
+                <ul>
+
+                    <li><strong>Canales Directos:</strong> Portal web (bhd.com.do), App Móvil e Internet Banking (Contacto transaccional).</li>
+
+                    <li><strong>Canales Físicos:</strong> Sucursales, Cajeros Automáticos y Subagentes Bancarios.</li>
+
+                    <li><strong>Canales Indirectos/Marketing:</strong> Redes sociales (IG, FB), correos transaccionales y notificaciones push.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // MODELO DE NEGOCIO CANVAS</div>
+
+</div>
+
+
+<!-- SLIDE 14: ACTIVIDADES Y RECURSOS CLAVE -->
+
+<div class="slide-container" id="slide14">
+
+    <div class="left-green-anchor" style="background-color: var(--accent-orange);"></div>
+
+    <div class="content-area" style="padding-left: 120px; padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square" style="background-color: var(--accent-blue);">07</div>
+
+            ACTIVIDADES Y RECURSOS CLAVE
+
+        </div>
+
+        
+
+        <div class="rect-grid-2" style="margin-top: 20px;">
+
+            <div class="rect-tile">
+
+                <span class="canvas-tag">Actividades Clave</span>
+
+                <h3>La Maquinaria Operativa</h3>
+
+                <p>Las acciones vitales para que la propuesta de valor funcione y se entregue al cliente sin interrupciones:</p>
+
+                <ul>
+
+                    <li><strong>Procesamiento de Transacciones:</strong> Validar saldos y autorizar pagos en milisegundos de forma segura.</li>
+
+                    <li><strong>Ciberseguridad Continua:</strong> Monitoreo 24/7 para prevenir fraudes y ataques informáticos.</li>
+
+                    <li><strong>Mantenimiento IT:</strong> Actualizaciones y plan de contingencia para garantizar el <i>uptime</i> (disponibilidad).</li>
+
+                    <li><strong>Marketing e Innovación:</strong> Desarrollo de nuevas interfaces y venta cruzada de productos.</li>
+
+                </ul>
+
+            </div>
+
+            
+
+            <div class="rect-tile">
+
+                <span class="canvas-tag">Recursos Clave</span>
+
+                <h3>Activos Fundamentales</h3>
+
+                <p>Los elementos más costosos e importantes que permiten la operatividad del banco digital:</p>
+
+                <ul>
+
+                    <li><strong>Tecnológicos:</strong> Servidores en la Nube (Cloud), Core Bancario, plataforma web y protocolos de encriptación (SSL).</li>
+
+                    <li><strong>Talento Humano:</strong> Desarrolladores, expertos en ciberseguridad y soporte especializado.</li>
+
+                    <li><strong>Red de Aceptación:</strong> Infraestructura que permite que las tarjetas sean reconocidas globalmente.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // MODELO DE NEGOCIO CANVAS</div>
+
+</div>
+
+
+<!-- SLIDE 15: SOCIOS CLAVE -->
+
+<div class="slide-container" id="slide15">
+
+    <div class="content-area" style="padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square" style="background-color: var(--accent-blue);">07</div>
+
+            SOCIOS CLAVE (PARTNERSHIPS)
+
+        </div>
+
+        <p style="margin-bottom: 30px; font-size: 18px;">Aliados estratégicos de los cuales adquirimos recursos o externalizamos actividades.</p>
+
+
+        <div class="rect-grid-3">
+
+            <div class="rect-tile solid-green">
+
+                <span class="canvas-tag" style="background-color: var(--bg-black);">Redes de Procesamiento</span>
+
+                <h3 style="color: var(--bg-black);">Pagos e Interconexión</h3>
+
+                <p>Aportan la tecnología para que el dinero salga del BHD hacia otros bancos o comercios globales.</p>
+
+                <ul>
+
+                    <li><strong>Visa y Mastercard:</strong> Red de aceptación global.</li>
+
+                    <li><strong>UNAP / ACH:</strong> Conectividad interbancaria nacional (LBTR/SIP).</li>
+
+                    <li>Comercios aliados (puntos de canje).</li>
+
+                </ul>
+
+            </div>
+
+            
+
+            <div class="rect-tile">
+
+                <span class="canvas-tag">Proveedores Tecnológicos</span>
+
+                <h3>Cloud & Core Bancario</h3>
+
+                <p>Proveen la capacidad de procesamiento y el motor de software para manejar miles de cuentas simultáneas.</p>
+
+                <ul>
+
+                    <li>Servicios Cloud (Microsoft Azure / AWS).</li>
+
+                    <li>Empresas de software bancario.</li>
+
+                    <li>Firmas Certificadoras de Seguridad (SSL).</li>
+
+                </ul>
+
+            </div>
+
+            
+
+            <div class="rect-tile">
+
+                <span class="canvas-tag">Telcos & Reguladores</span>
+
+                <h3>Conectividad y Ley</h3>
+
+                <p>Garantizan el acceso físico a internet y el cumplimiento del marco legal dominicano.</p>
+
+                <ul>
+
+                    <li><strong>Telecomunicaciones:</strong> Claro, Altice (Conectividad e infraestructura SMS).</li>
+
+                    <li><strong>Reguladores:</strong> Superintendencia de Bancos (Cumplimiento de la Ley 126-02).</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // MODELO DE NEGOCIO CANVAS</div>
+
+</div>
+
+
+<!-- SLIDE 16: ESTRUCTURA DE COSTES Y FLUJO DE INGRESOS (MASSIVE GRID) -->
+
+<div class="slide-container" id="slide16">
+
+    <div class="massive-grid">
+
+        <!-- TOP LEFT: COSTES FIJOS -->
+
+        <div class="massive-block black">
+
+            <div class="massive-num" style="color: var(--accent-orange);">01</div>
+
+            <span class="canvas-tag">Estructura de Costes (Fijos)</span>
+
+            <h3 style="font-size: 26px; margin-bottom: 15px;">Infraestructura y Licencias</h3>
+
+            <p style="font-size: 18px; color: var(--text-gray);">Para operar 24/7 sin colapsar, se requiere inversión masiva en Alojamiento Cloud, mantenimiento de servidores (Data Centers locales) y pago de licencias de Core Bancario y protocolos de ciberseguridad.</p>
+
+        </div>
+
+        
+
+        <!-- TOP RIGHT: COSTES VARIABLES / RRHH -->
+
+        <div class="massive-block green">
+
+            <div class="massive-num" style="color: var(--bg-black);">02</div>
+
+            <span class="canvas-tag" style="background-color: var(--bg-black);">Costes Variables & RRHH</span>
+
+            <h3 style="font-size: 26px; margin-bottom: 15px; color: var(--bg-black);">Talento, Soporte y Marketing</h3>
+
+            <p style="color: var(--text-white); font-size: 18px;">La nómina especializada (Desarrolladores, Ingenieros de Seguridad), así como las fluctuaciones en inversión de publicidad digital y escalamiento de servidores durante picos de tráfico.</p>
+
+        </div>
+
+
+        <!-- BOTTOM LEFT: INGRESOS TRANSACCIONALES -->
+
+        <div class="massive-block green">
+
+            <div class="massive-num" style="color: var(--bg-black);">03</div>
+
+            <span class="canvas-tag" style="background-color: var(--bg-black);">Flujo de Ingresos</span>
+
+            <h3 style="font-size: 26px; margin-bottom: 15px; color: var(--bg-black);">Ingresos Transaccionales</h3>
+
+            <p style="color: var(--text-white); font-size: 18px;">Comisiones directas generadas a través del portal por transferencias interbancarias (LBTR, SIP), pagos de servicios a terceros, venta de divisas y emisión de certificaciones.</p>
+
+        </div>
+
+        
+
+        <!-- BOTTOM RIGHT: MARGEN FINANCIERO -->
+
+        <div class="massive-block black">
+
+            <div class="massive-num" style="color: var(--accent-blue);">04</div>
+
+            <span class="canvas-tag">Flujo de Ingresos</span>
+
+            <h3 style="font-size: 26px; margin-bottom: 15px;">Margen Financiero y Suscripciones</h3>
+
+            <p style="font-size: 18px; color: var(--text-gray);">Intereses generados por productos (préstamos, tarjetas) adquiridos mediante <i>onboarding digital</i> en el portal. Además, cobros de suscripción mensual a empresas por servicios de gestión de nómina (BHD Empresarial).</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================== -->
+
+<!-- FASE III: CONCLUSIÓN Y CIERRE -->
+
+<!-- ========================================== -->
+
+
+<!-- SLIDE 17: ESTRUCTURA VISUAL (DIAGRAMA) -->
+
+<div class="slide-container" id="slide17">
+
+    <div class="content-area" style="padding-top: 60px;">
+
+        <div class="slide-title">
+
+            <div class="slide-number-square">05</div> <!-- Changed back to green theme for visual structure -->
+
+            ESTRUCTURA FUNCIONAL VISUAL
+
+        </div>
+
+        
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 20px;">
+
+            <div>
+
+                <h3 style="font-size: 32px; margin-bottom: 20px; text-transform: none;">Diagrama Jerárquico</h3>
+
+                <p style="font-size: 20px; margin-bottom: 20px;">Representación visual del flujo de navegación y organización de la información del sitio web del BHD.</p>
+
+                <div style="padding: 20px; background-color: var(--primary-green); color: var(--text-white); border-left: 8px solid var(--accent-orange);">
+
+                    <p style="color: white; font-weight: 700; font-family: 'Space Grotesk', sans-serif;">ARQUITECTURA DE CERO FRICCIÓN</p>
+
+                </div>
+
+            </div>
+
+            <div class="strict-image-frame" style="height: 400px; border-color: var(--primary-green);">
+
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/8681159250625502919" alt="Website architecture sitemap diagram flowchart dark mode">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-stamp">BHD // ESTRUCTURA EJECUTIVA</div>
+
+</div>
+
+
+<!-- SLIDE 18: CONCLUSION FINAL -->
+
+<div class="slide-container" id="slide18">
+
+    <div class="massive-grid">
+
+        <div class="massive-block green">
+
+            <div class="massive-num" style="color: var(--bg-black);">01</div>
+
+            <h3 style="font-size: 30px; margin-bottom: 20px; color: var(--bg-black);">Modelo Escalable</h3>
+
+            <p style="color: var(--text-white); font-size: 20px;">Migra exitosamente la operatividad hacia el autoservicio, reduciendo costos logísticos de las sucursales.</p>
+
+        </div>
+
+        <div class="massive-block black">
+
+            <div class="massive-num" style="color: var(--primary-green);">02</div>
+
+            <h3 style="font-size: 30px; margin-bottom: 20px;">Experiencia UX/UI</h3>
+
+            <p style="font-size: 20px;">Prioriza la navegación intuitiva, disminuyendo fricciones en la adquisición digital de nuevos productos.</p>
+
+        </div>
+
+        <div class="massive-block black">
+
+            <div class="massive-num" style="color: var(--primary-green);">03</div>
+
+            <h3 style="font-size: 30px; margin-bottom: 20px;">Ecosistema Digital</h3>
+
+            <p style="font-size: 20px;">Sincronización impecable entre aliados (Visa, Cloud), el portal web, la app móvil y el contact center omnicanal.</p>
+
+        </div>
+
+        <div class="massive-block green">
+
+            <div class="massive-num" style="color: var(--bg-black);">04</div>
+
+            <h3 style="font-size: 30px; margin-bottom: 20px; color: var(--bg-black);">Banca Moderna</h3>
+
+            <p style="color: var(--text-white); font-size: 20px;">Cumple y supera los más estrictos estándares de ciberseguridad (SSL, Ley 126-02) que exige el mercado actual.</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SLIDE 19: CIERRE -->
+
+<div class="slide-container" id="slide19" style="padding: 0;">
+
+    <div class="center-block-layout">
+
+        <div class="center-black-box">
+
+            <h1 style="font-size: 120px; line-height: 1; color: var(--primary-green);">GRACIAS</h1>
+
+            <div style="height: 4px; width: 100px; background-color: var(--text-white); margin: 30px auto;"></div>
+
+            <h3 style="font-size: 24px; color: var(--text-gray); letter-spacing: 0.2em;">ESTRUCTURA & MODELO DE NEGOCIO BHD</h3>
+
+            <p style="margin-top: 40px; font-family: monospace; color: var(--accent-orange);">BHD.COM.DO</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
+
