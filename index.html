@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banco BHD - Análisis y Modelo de Negocio</title>
+    <title>Banco BHD - Análisis y Modelo de Negocio Digital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -53,13 +53,17 @@
 
       /* --- CONTENEDOR PRINCIPAL DE LA DIAPOSITIVA --- */
       .slide-container {
-        width: 1280px;
-        height: 720px;
+        /* Responsive sizing: don't exceed viewport */
+        width: min(1280px, 96vw);
+        max-width: 96vw;
+        height: min(720px, 96vh);
+        max-height: 96vh;
         background-color: var(--bg-black);
         position: absolute;
         top: 50%;
         left: 50%;
-        overflow: hidden;
+        transform: translate(-50%, -50%);
+        overflow: auto;
         display: flex;
         flex-direction: column;
         color: var(--text-white);
@@ -97,8 +101,8 @@
       }
 
       .slide-title {
-        font-size: 45px;
-        margin-bottom: 40px;
+        font-size: 40px;
+        margin-bottom: 30px;
         display: flex;
         align-items: center;
         gap: 20px;
@@ -116,6 +120,7 @@
         font-size: 24px;
         font-weight: 700;
         border-bottom: 4px solid var(--accent-orange);
+        flex-shrink: 0;
       }
 
       .content-area {
@@ -213,6 +218,7 @@
         background-color: var(--primary-green);
         z-index: 1;
       }
+
       .agenda-grid-rect {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -222,10 +228,10 @@
       .agenda-card-rect {
         background-color: var(--bg-black);
         border: 1px solid var(--border-color);
-        padding: 30px 20px;
+        padding: 25px 20px;
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
         position: relative;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
       }
@@ -241,13 +247,13 @@
       }
       .agenda-card-rect .num {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 700;
         color: var(--primary-green);
         line-height: 1;
       }
       .agenda-card-rect h3 {
-        font-size: 16px;
+        font-size: 14px;
       }
 
       .split-content {
@@ -276,6 +282,11 @@
         height: 100%;
         border: 10px solid var(--bg-dark-gray);
         position: relative;
+        background-color: var(--bg-black);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
       }
       .strict-image-frame::after {
         content: "";
@@ -292,7 +303,18 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: grayscale(30%) contrast(1.1);
+        filter: grayscale(20%) contrast(1.1);
+        transition: filter 0.3s ease;
+      }
+      .strict-image-frame:hover img {
+        filter: grayscale(0%) contrast(1);
+      }
+      .img-placeholder-text {
+        position: absolute;
+        color: var(--text-gray);
+        font-family: monospace;
+        z-index: 5;
+        text-align: center;
       }
 
       .rect-grid-3 {
@@ -311,7 +333,7 @@
       .rect-tile {
         background-color: var(--bg-dark-gray);
         border: 1px solid var(--border-color);
-        padding: 40px;
+        padding: 30px;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -325,15 +347,15 @@
         color: rgba(255, 255, 255, 0.9);
       }
       .rect-tile .icon-square {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         background-color: var(--bg-black);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24px;
+        font-size: 20px;
         color: var(--primary-green);
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         border: 1px solid var(--border-color);
       }
       .rect-tile.solid-green .icon-square {
@@ -342,8 +364,8 @@
         border-color: var(--bg-black);
       }
       .rect-tile h3 {
-        font-size: 22px;
-        margin-bottom: 15px;
+        font-size: 20px;
+        margin-bottom: 10px;
       }
       .rect-tile ul {
         list-style: none;
@@ -352,53 +374,20 @@
       .rect-tile ul li {
         position: relative;
         padding-left: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
+        font-size: 15px;
       }
       .rect-tile ul li::before {
         content: "";
         position: absolute;
         left: 0;
         top: 8px;
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
         background-color: var(--accent-orange);
       }
       .rect-tile.solid-green ul li::before {
         background-color: var(--accent-blue);
-      }
-
-      .strip-list {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-        max-width: 1000px;
-      }
-      .strip-item {
-        display: flex;
-        background-color: var(--bg-dark-gray);
-        border: 1px solid var(--border-color);
-        min-height: 80px;
-      }
-      .strip-header {
-        width: 250px;
-        background-color: var(--primary-green);
-        color: var(--text-white);
-        display: flex;
-        align-items: center;
-        padding: 20px 30px;
-        font-family: "Space Grotesk", sans-serif;
-        font-weight: 700;
-        font-size: 18px;
-        text-transform: uppercase;
-      }
-      .strip-body {
-        flex-grow: 1;
-        display: flex;
-        align-items: center;
-        padding: 20px 30px;
-        font-size: 18px;
-        color: var(--text-gray);
       }
 
       .left-green-anchor {
@@ -423,7 +412,7 @@
         z-index: 5;
       }
       .massive-block {
-        padding: 60px 80px;
+        padding: 50px 80px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -438,10 +427,10 @@
       }
       .massive-block .massive-num {
         position: absolute;
-        top: 40px;
+        top: 30px;
         right: 40px;
         font-family: "Space Grotesk", sans-serif;
-        font-size: 80px;
+        font-size: 60px;
         font-weight: 700;
         opacity: 0.1;
       }
@@ -474,6 +463,7 @@
         letter-spacing: 0.1em;
         z-index: 100;
       }
+
       .canvas-tag {
         display: inline-block;
         background-color: var(--accent-blue);
@@ -483,11 +473,10 @@
         font-weight: 700;
         margin-bottom: 15px;
         text-transform: uppercase;
+        align-self: flex-start;
       }
 
-      /* --- 4. NUEVOS ESTILOS: UI GLOBAL (FUERA DE LOS SLIDES) --- */
-
-      /* Indicador de Tema (Fijo abajo a la izquierda) */
+      /* --- 4. UI GLOBAL (FUERA DE LOS SLIDES) --- */
       .presentation-topic {
         position: fixed;
         bottom: 40px;
@@ -500,20 +489,18 @@
         padding: 12px 24px;
         border-radius: 50px;
         border: 1px solid var(--border-color);
-        border-left: 4px solid var(--accent-orange); /* Color dinámico vía JS */
+        border-left: 4px solid var(--accent-orange);
         backdrop-filter: blur(12px);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
         transition:
           all 0.3s ease,
           opacity 0.3s ease;
       }
-
       .presentation-topic i {
-        color: var(--accent-orange); /* Color dinámico vía JS */
+        color: var(--accent-orange);
         font-size: 18px;
         transition: color 0.3s ease;
       }
-
       .presentation-topic-text {
         color: var(--text-white);
         font-family: "Inter", sans-serif;
@@ -523,7 +510,6 @@
         transition: opacity 0.3s ease;
       }
 
-      /* Controles de Navegación (Fijos abajo a la derecha) */
       .presentation-controls {
         position: fixed;
         bottom: 40px;
@@ -539,7 +525,6 @@
         backdrop-filter: blur(12px);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
       }
-
       .nav-btn {
         background-color: var(--primary-green);
         border: none;
@@ -555,20 +540,17 @@
         transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         box-shadow: 0 4px 15px rgba(11, 121, 59, 0.4);
       }
-
       .nav-btn:hover:not(:disabled) {
         background-color: var(--accent-orange);
         transform: scale(1.15);
         box-shadow: 0 6px 20px rgba(252, 100, 47, 0.5);
       }
-
       .nav-btn:disabled {
         background-color: #2a2a2a;
         color: #555;
         cursor: not-allowed;
         box-shadow: none;
       }
-
       .slide-counter {
         color: var(--text-white);
         font-family: "Space Grotesk", sans-serif;
@@ -577,6 +559,21 @@
         min-width: 70px;
         text-align: center;
         letter-spacing: 2px;
+      }
+
+      /* Helpers */
+      .highlight-list li {
+        margin-bottom: 15px;
+        padding-left: 30px;
+        position: relative;
+        font-size: 18px;
+      }
+      .highlight-list li i {
+        position: absolute;
+        left: 0;
+        top: 4px;
+        color: var(--accent-orange);
+        font-size: 16px;
       }
     </style>
   </head>
@@ -589,19 +586,11 @@
 
     <!-- UI GLOBAL: CONTROLES DE NAVEGACIÓN (Derecha) -->
     <div class="presentation-controls">
-      <button
-        class="nav-btn"
-        id="prevBtn"
-        title="Retroceder (Flecha Izquierda)"
-      >
+      <button class="nav-btn" id="prevBtn" title="Retroceder">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <div class="slide-counter" id="slideCounter">1 / 19</div>
-      <button
-        class="nav-btn"
-        id="nextBtn"
-        title="Avanzar (Flecha Derecha / Espacio)"
-      >
+      <div class="slide-counter" id="slideCounter">1 / X</div>
+      <button class="nav-btn" id="nextBtn" title="Avanzar">
         <i class="fa-solid fa-chevron-right"></i>
       </button>
     </div>
@@ -610,8 +599,8 @@
     <div
       class="slide-container active"
       id="slide1"
-      data-topic="Introducción y Presentación del Equipo"
-      data-icon="fa-microphone-lines"
+      data-topic="Presentación Inicial"
+      data-icon="fa-door-open"
       data-color="var(--accent-orange)"
     >
       <div class="split-layout">
@@ -653,7 +642,6 @@
           <p class="title-sub">
             Estructura Funcional y Modelo de Negocio (Canvas)
           </p>
-
           <div class="team-grid-strict">
             <div class="team-box">
               <span class="name">Elvis Paez</span
@@ -680,11 +668,11 @@
       </div>
     </div>
 
-    <!-- SLIDE 2: AGENDA EXPANDIDA -->
+    <!-- SLIDE 2: AGENDA -->
     <div
       class="slide-container"
       id="slide2"
-      data-topic="Agenda Estructural"
+      data-topic="Agenda de la Presentación"
       data-icon="fa-list"
       data-color="var(--primary-green)"
     >
@@ -697,19 +685,25 @@
         <div class="agenda-grid-rect" style="margin-top: 20px">
           <div class="agenda-card-rect">
             <div class="num">01</div>
-            <h3>Objetivo General</h3>
+            <h3>Introducción & Objetivos</h3>
           </div>
           <div class="agenda-card-rect">
             <div class="num">02</div>
-            <h3>Objetivos Específicos</h3>
-          </div>
-          <div class="agenda-card-rect">
-            <div class="num">03</div>
             <h3>Estructura Funcional</h3>
           </div>
           <div class="agenda-card-rect">
-            <div class="num">04</div>
-            <h3>Secciones del Sitio</h3>
+            <div class="num">03</div>
+            <h3>Observaciones del Portal</h3>
+          </div>
+          <div
+            class="agenda-card-rect"
+            style="
+              border-top-color: var(--accent-blue);
+              border-left-color: var(--accent-blue);
+            "
+          >
+            <div class="num" style="color: var(--accent-blue)">04</div>
+            <h3>Business Model Canvas</h3>
           </div>
           <div
             class="agenda-card-rect"
@@ -719,53 +713,53 @@
             "
           >
             <div class="num" style="color: var(--accent-blue)">05</div>
-            <h3>Sitio & Propuesta</h3>
+            <h3>Mapeo de Bloques (BMC)</h3>
           </div>
           <div
             class="agenda-card-rect"
             style="
-              border-top-color: var(--accent-blue);
-              border-left-color: var(--accent-blue);
+              border-top-color: var(--accent-orange);
+              border-left-color: var(--accent-orange);
             "
           >
-            <div class="num" style="color: var(--accent-blue)">06</div>
-            <h3>Clientes & Canales</h3>
+            <div class="num" style="color: var(--accent-orange)">06</div>
+            <h3>Evaluación Crítica (FODA)</h3>
           </div>
           <div
             class="agenda-card-rect"
             style="
-              border-top-color: var(--accent-blue);
-              border-left-color: var(--accent-blue);
+              border-top-color: var(--accent-orange);
+              border-left-color: var(--accent-orange);
             "
           >
-            <div class="num" style="color: var(--accent-blue)">07</div>
-            <h3>Recursos & Socios</h3>
+            <div class="num" style="color: var(--accent-orange)">07</div>
+            <h3>Relación Sitio/Negocio</h3>
           </div>
           <div
             class="agenda-card-rect"
             style="
-              border-top-color: var(--accent-blue);
-              border-left-color: var(--accent-blue);
+              border-top-color: var(--accent-orange);
+              border-left-color: var(--accent-orange);
             "
           >
-            <div class="num" style="color: var(--accent-blue)">08</div>
-            <h3>Costes & Ingresos</h3>
+            <div class="num" style="color: var(--accent-orange)">08</div>
+            <h3>Conclusiones</h3>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 3: OBJETIVO GENERAL -->
+    <!-- SLIDE 3: INTRODUCCIÓN -->
     <div
       class="slide-container"
       id="slide3"
-      data-topic="Fundamentos: Objetivo General"
-      data-icon="fa-bullseye"
+      data-topic="Introducción"
+      data-icon="fa-book-open"
       data-color="var(--accent-orange)"
     >
       <div class="split-content">
         <div class="split-green-pane">
-          <div class="slide-title" style="margin-bottom: 60px">
+          <div class="slide-title" style="margin-bottom: 40px">
             <div
               class="slide-number-square"
               style="
@@ -776,383 +770,296 @@
             >
               01
             </div>
-            OBJETIVO GENERAL
+            INTRODUCCIÓN
           </div>
-          <h3
+          <p
             style="
-              font-size: 32px;
-              margin-bottom: 30px;
-              text-transform: none;
-              color: var(--bg-black);
+              font-size: 20px;
+              line-height: 1.6;
+              color: var(--text-white);
+              margin-bottom: 20px;
             "
           >
-            Visión Estratégica de la Plataforma Digital
-          </h3>
+            El presente análisis evalúa la estructura funcional y el modelo de
+            negocio digital del portal web del Banco BHD, identificando los
+            componentes estratégicos y operacionales que permiten ofrecer
+            servicios financieros digitales a clientes personales, comerciales y
+            corporativos.
+          </p>
           <p
             style="font-size: 20px; line-height: 1.6; color: var(--text-white)"
           >
-            Ofrecer una plataforma digital integral que permita a clientes y
-            usuarios acceder a productos y servicios financieros, realizar
-            operaciones en línea y obtener información institucional, de manera
-            segura, ágil y centrada en el cliente.
+            El estudio se basa en la observación directa del portal oficial del
+            banco y su ecosistema digital, incluyendo banca en línea,
+            aplicaciones móviles y servicios de autoservicio.
           </p>
-          <div style="display: flex; gap: 15px; margin-top: 40px">
-            <div
-              style="
-                padding: 10px 20px;
-                background-color: var(--bg-black);
-                color: var(--text-white);
-                font-weight: 700;
-              "
-            >
-              SEGURIDAD
-            </div>
-            <div
-              style="
-                padding: 10px 20px;
-                background-color: var(--accent-orange);
-                color: var(--bg-black);
-                font-weight: 700;
-              "
-            >
-              AGILIDAD
-            </div>
-          </div>
         </div>
         <div class="split-black-pane">
           <div class="strict-image-frame">
+            <span class="img-placeholder-text"
+              >[Insertar Captura Real: Homepage del BHD en Monitor]</span
+            >
             <img
-              src="./images/appbanking.png"
-              alt="Digital banking mobile app interface corporate green black"
-              onerror="
-                this.src =
-                  'https://placehold.co/600x600/121212/ffffff?text=App+Preview'
-              "
+              src="./images/captura_bhd_intro.jpg"
+              alt="Captura del portal BHD"
+              onerror="this.style.display = 'none'"
             />
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 4: OBJETIVOS I -->
+    <!-- SLIDE 4: OBJETIVO GENERAL -->
     <div
       class="slide-container"
       id="slide4"
-      data-topic="Fundamentos: Objetivos Específicos"
+      data-topic="Objetivos de la Investigación"
       data-icon="fa-bullseye"
       data-color="var(--accent-orange)"
     >
       <div class="content-area" style="padding-top: 60px">
         <div class="slide-title">
           <div class="slide-number-square">02</div>
-          OBJETIVOS ESPECÍFICOS (I)
+          OBJETIVO GENERAL
         </div>
-        <div class="rect-grid-3" style="margin-top: 40px">
-          <div class="rect-tile">
-            <div class="icon-square">
-              <i class="fa-solid fa-mobile-screen"></i>
-            </div>
-            <h3>Servicios Digitales</h3>
-            <p>
-              Facilitar el acceso al Internet Banking para realizar operaciones
-              financieras desde cualquier lugar con total seguridad.
-            </p>
-          </div>
-          <div class="rect-tile solid-green">
-            <div class="icon-square">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
-            <h3>Promoción Comercial</h3>
-            <p>
-              Promover y comercializar cuentas, préstamos, tarjetas e
-              inversiones a través del portal web, ampliando el alcance del
-              banco.
-            </p>
-          </div>
-          <div class="rect-tile">
-            <div class="icon-square">
-              <i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <h3>Transparencia</h3>
-            <p>
-              Brindar información corporativa clara: historia, misión, visión y
-              estados financieros, fortaleciendo la confianza.
-            </p>
-          </div>
+        <div
+          class="rect-tile solid-green"
+          style="
+            margin-top: 20px;
+            padding: 60px;
+            border-left: 10px solid var(--accent-orange);
+          "
+        >
+          <h3
+            style="
+              font-size: 32px;
+              line-height: 1.4;
+              color: var(--bg-black);
+              text-transform: none;
+            "
+          >
+            Analizar la estructura funcional y el modelo de negocio digital del
+            portal web del Banco BHD, identificando sus componentes operativos,
+            estratégicos y tecnológicos dentro del ecosistema de banca digital.
+          </h3>
         </div>
       </div>
+      <div class="footer-stamp">BHD // ANÁLISIS ACADÉMICO</div>
     </div>
 
-    <!-- SLIDE 5: OBJETIVOS II -->
+    <!-- SLIDE 5: OBJETIVOS ESPECÍFICOS -->
     <div
       class="slide-container"
       id="slide5"
-      data-topic="Fundamentos: Objetivos Específicos"
-      data-icon="fa-bullseye"
+      data-topic="Objetivos de la Investigación"
+      data-icon="fa-list-check"
       data-color="var(--accent-orange)"
     >
       <div class="content-area" style="padding-top: 60px">
         <div class="slide-title">
           <div class="slide-number-square">02</div>
-          OBJETIVOS ESPECÍFICOS (II)
+          OBJETIVOS ESPECÍFICOS
         </div>
-        <div
-          class="rect-grid-2"
-          style="
-            margin-top: 40px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-          "
-        >
-          <div
-            class="rect-tile"
-            style="border-top: 5px solid var(--accent-orange)"
-          >
-            <div class="icon-square"><i class="fa-solid fa-headset"></i></div>
-            <h3>Atención y Soporte</h3>
+        <div class="rect-grid-2" style="margin-top: 30px">
+          <div class="rect-tile">
+            <div class="icon-square"><i class="fa-solid fa-sitemap"></i></div>
+            <h3 style="font-size: 20px">Organización Funcional</h3>
             <p>
-              Ofrecer canales de contacto, localizador de sucursales y cajeros,
-              FAQs y sistema de quejas para garantizar una experiencia completa
-              y resolutiva.
+              Evaluar la organización funcional del portal web y sus módulos
+              principales.
             </p>
           </div>
-          <div
-            class="rect-tile"
-            style="border-top: 5px solid var(--accent-blue)"
-          >
-            <div class="icon-square"><i class="fa-solid fa-microchip"></i></div>
-            <h3>Transformación Digital</h3>
+          <div class="rect-tile">
+            <div class="icon-square">
+              <i class="fa-solid fa-puzzle-piece"></i>
+            </div>
+            <h3 style="font-size: 20px">Análisis Canvas</h3>
             <p>
-              Impulsar la innovación y la experiencia del usuario a través de un
-              ecosistema digital que integra la app móvil, redes sociales y la
-              banca en línea.
+              Identificar los bloques del Business Model Canvas presentes en la
+              plataforma.
+            </p>
+          </div>
+          <div class="rect-tile">
+            <div class="icon-square">
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h3 style="font-size: 20px">Experiencia Digital</h3>
+            <p>
+              Analizar la experiencia digital ofrecida a clientes personales y
+              empresariales.
+            </p>
+          </div>
+          <div class="rect-tile">
+            <div class="icon-square">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3 style="font-size: 20px">Soporte Operativo</h3>
+            <p>
+              Determinar cómo el sitio web soporta las operaciones y la
+              estrategia comercial del banco.
             </p>
           </div>
         </div>
       </div>
-      <div
-        style="
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 20%;
-          background-color: var(--primary-green);
-          z-index: 1;
-        "
-      ></div>
     </div>
 
-    <!-- SLIDE 6: ESTRUCTURA FUNCIONAL -->
+    <!-- SLIDE 6: ESTRUCTURA FUNCIONAL DEL PORTAL -->
     <div
       class="slide-container"
       id="slide6"
-      data-topic="Análisis de Arquitectura y Estructura"
-      data-icon="fa-sitemap"
+      data-topic="Estructura Funcional del Portal"
+      data-icon="fa-cubes"
       data-color="var(--primary-green)"
     >
-      <div class="left-green-anchor" style="width: 20px"></div>
-      <div class="content-area" style="padding-top: 60px">
+      <div class="left-green-anchor"></div>
+      <div class="content-area" style="padding-left: 120px; padding-top: 60px">
         <div class="slide-title">
           <div class="slide-number-square">03</div>
-          ESTRUCTURA FUNCIONAL GENERAL
+          ESTRUCTURA FUNCIONAL DEL PORTAL
         </div>
-        <div class="strip-list" style="margin-top: 30px">
-          <div class="strip-item">
-            <div class="strip-header">01. HEADER</div>
-            <div class="strip-body">
-              Logo, accesos rápidos, login a banca digital y menú principal.
-            </div>
-          </div>
-          <div class="strip-item">
-            <div
-              class="strip-header"
-              style="
-                background-color: var(--bg-black);
-                border: 1px solid var(--primary-green);
-                color: var(--primary-green);
-              "
-            >
-              02. NAVEGACIÓN
-            </div>
-            <div class="strip-body">
-              Inicio, Banca Digital, Productos, Corporativa, Atención,
-              Información.
-            </div>
-          </div>
-          <div class="strip-item">
-            <div class="strip-header">03. CONTENIDO</div>
-            <div class="strip-body">
-              Secciones de productos, transacciones y exposición de marca.
-            </div>
-          </div>
-          <div class="strip-item">
-            <div
-              class="strip-header"
-              style="
-                background-color: var(--bg-black);
-                border: 1px solid var(--primary-green);
-                color: var(--primary-green);
-              "
-            >
-              04. INFORMACIÓN
-            </div>
-            <div class="strip-body">
-              Noticias, sala de prensa, promociones y ciberseguridad.
-            </div>
-          </div>
-          <div class="strip-item">
-            <div class="strip-header">05. FOOTER</div>
-            <div class="strip-body">
-              Políticas de privacidad, términos legales y redes sociales.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 7: SECCIONES I -->
-    <div
-      class="slide-container"
-      id="slide7"
-      data-topic="Desglose de Secciones (Frontend)"
-      data-icon="fa-border-all"
-      data-color="var(--primary-green)"
-    >
-      <div class="left-green-anchor"></div>
-      <div class="content-area" style="padding-left: 120px; padding-top: 60px">
-        <div class="slide-title">
-          <div class="slide-number-square">04</div>
-          SECCIONES DEL SITIO (I)
-        </div>
-        <div class="rect-grid-3" style="margin-top: 40px">
+        <div class="rect-grid-3" style="margin-top: 20px">
+          <!-- Módulo 1 -->
           <div class="rect-tile solid-green">
-            <div class="icon-square"><i class="fa-solid fa-house"></i></div>
-            <h3 style="color: var(--bg-black)">Página de Inicio</h3>
+            <div class="icon-square">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 style="color: var(--bg-black)">1. Acceso y Autenticación</h3>
             <ul>
-              <li>Banner principal y ofertas</li>
-              <li>Accesos rápidos (Cuentas)</li>
-              <li>Productos destacados</li>
+              <li>Inicio de sesión personal/empresarial.</li>
+              <li>Validación segura de usuarios.</li>
+              <li>Recuperación de credenciales.</li>
             </ul>
           </div>
-          <div class="rect-tile">
-            <div class="icon-square"><i class="fa-solid fa-vault"></i></div>
-            <h3>Banca Digital</h3>
-            <ul>
-              <li>Consultas de saldo</li>
-              <li>Transferencias</li>
-              <li>Pagos de servicios</li>
-            </ul>
-          </div>
+          <!-- Módulo 2 -->
           <div class="rect-tile">
             <div class="icon-square">
-              <i class="fa-solid fa-credit-card"></i>
+              <i class="fa-solid fa-money-bill-transfer"></i>
             </div>
-            <h3>Productos</h3>
+            <h3>2. Módulo Transaccional</h3>
             <ul>
-              <li>Cuentas y Tarjetas</li>
-              <li>Préstamos e Hipotecas</li>
-              <li>Calculadoras financieras</li>
+              <li>Transferencias interbancarias.</li>
+              <li>Pago de servicios e impuestos.</li>
+              <li>Consulta de balances y movimientos.</li>
             </ul>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 8: SECCIONES II -->
-    <div
-      class="slide-container"
-      id="slide8"
-      data-topic="Desglose de Secciones (Frontend)"
-      data-icon="fa-border-all"
-      data-color="var(--primary-green)"
-    >
-      <div class="left-green-anchor"></div>
-      <div class="content-area" style="padding-left: 120px; padding-top: 60px">
-        <div class="slide-title">
-          <div class="slide-number-square">04</div>
-          SECCIONES DEL SITIO (II)
-        </div>
-        <div class="rect-grid-2" style="margin-top: 40px">
+          <!-- Módulo 3 -->
+          <div class="rect-tile">
+            <div class="icon-square"><i class="fa-solid fa-store"></i></div>
+            <h3>3. Módulo Comercial</h3>
+            <ul>
+              <li>Solicitud digital de productos.</li>
+              <li>Promoción de tarjetas y préstamos.</li>
+              <li>Captación de nuevos clientes.</li>
+            </ul>
+          </div>
+          <!-- Módulo 4 -->
+          <div class="rect-tile">
+            <div class="icon-square"><i class="fa-solid fa-headset"></i></div>
+            <h3>4. Atención al Cliente</h3>
+            <ul>
+              <li>FAQs y Contact center.</li>
+              <li>Chat y canales de soporte.</li>
+              <li>Localizador de sucursales.</li>
+            </ul>
+          </div>
+          <!-- Módulo 5 -->
           <div class="rect-tile">
             <div class="icon-square"><i class="fa-solid fa-building"></i></div>
-            <h3>Sección Corporativa</h3>
+            <h3>5. Informativo Institucional</h3>
             <ul>
-              <li>Historia y trayectoria</li>
-              <li>Misión, visión y valores</li>
-              <li>Gobierno corporativo</li>
-              <li>Estados financieros públicos</li>
+              <li>Noticias y RSE.</li>
+              <li>Información corporativa.</li>
+              <li>Educación financiera.</li>
             </ul>
           </div>
-          <div class="rect-tile solid-green">
-            <div class="icon-square"><i class="fa-solid fa-headset"></i></div>
-            <h3 style="color: var(--bg-black)">Atención al Cliente</h3>
-            <ul>
-              <li>Preguntas frecuentes (FAQs)</li>
-              <li>Formularios de contacto</li>
-              <li>Localizador de sucursales</li>
-              <li>Canal de quejas e incidencias</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 9: SECCIONES III -->
-    <div
-      class="slide-container"
-      id="slide9"
-      data-topic="Desglose de Secciones (Frontend)"
-      data-icon="fa-border-all"
-      data-color="var(--primary-green)"
-    >
-      <div class="left-green-anchor"></div>
-      <div class="content-area" style="padding-left: 120px; padding-top: 60px">
-        <div class="slide-title">
-          <div class="slide-number-square">04</div>
-          SECCIONES DEL SITIO (III)
-        </div>
-        <div class="rect-grid-3" style="margin-top: 40px">
+          <!-- Módulo 6 -->
           <div class="rect-tile">
-            <div class="icon-square"><i class="fa-solid fa-newspaper"></i></div>
-            <h3>Info y Contenido</h3>
-            <ul>
-              <li>Noticias y prensa</li>
-              <li>Promociones vigentes</li>
-              <li>Ciberseguridad</li>
-            </ul>
-          </div>
-          <div class="rect-tile">
-            <div class="icon-square">
-              <i class="fa-solid fa-file-contract"></i>
-            </div>
-            <h3>S. Complementarios</h3>
-            <ul>
-              <li>Tarifarios bancarios</li>
-              <li>Tasas de cambio</li>
-              <li>Políticas y contratos</li>
-            </ul>
-          </div>
-          <div class="rect-tile solid-green">
             <div class="icon-square">
               <i class="fa-solid fa-mobile-screen-button"></i>
             </div>
-            <h3 style="color: var(--bg-black)">Canales Alternos</h3>
+            <h3>6. Módulo Omnicanal</h3>
             <ul>
-              <li>App móvil BHD</li>
-              <li>Redes sociales</li>
-              <li>Contact center 24/7</li>
+              <li>Integración con app móvil.</li>
+              <li>Redes sociales.</li>
+              <li>Notificaciones digitales.</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 10: TRANSICIÓN A CANVAS -->
+    <!-- SLIDE 7: OBSERVACIONES REALES DEL PORTAL -->
     <div
       class="slide-container"
-      id="slide10"
+      id="slide7"
+      data-topic="Observaciones del Sitio Web"
+      data-icon="fa-magnifying-glass"
+      data-color="var(--primary-green)"
+    >
+      <div class="split-content">
+        <div class="split-black-pane" style="padding: 40px">
+          <div
+            class="strict-image-frame"
+            style="border-color: var(--primary-green)"
+          >
+            <span class="img-placeholder-text"
+              >[Insertar Captura Real: Menú de Productos BHD / App Móvil]</span
+            >
+            <img
+              src="./images/captura_bhd_menu.jpg"
+              alt="Evidencia portal BHD"
+              onerror="this.style.display = 'none'"
+            />
+          </div>
+        </div>
+        <div class="split-green-pane" style="padding-left: 60px">
+          <div class="slide-title" style="margin-bottom: 30px">
+            <div
+              class="slide-number-square"
+              style="
+                background-color: var(--bg-black);
+                color: var(--primary-green);
+                border-bottom-color: var(--text-white);
+              "
+            >
+              04
+            </div>
+            OBSERVACIONES REALES
+          </div>
+          <ul
+            class="highlight-list"
+            style="color: white; list-style: none; padding: 0"
+          >
+            <li>
+              <i class="fa-solid fa-circle-check"></i> El homepage prioriza
+              productos financieros y accesos rápidos.
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i> Existe segmentación
+              visible entre clientes personales, empresariales y PYMES.
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i> El portal integra accesos
+              directos unificados a la banca digital y aplicaciones móviles.
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i> El diseño utiliza CTAs
+              (Call to Action) visibles orientados a la conversión digital.
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i> La navegación está
+              plenamente optimizada para dispositivos móviles (Responsive
+              Design).
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: TRANSICIÓN A CANVAS -->
+    <div
+      class="slide-container"
+      id="slide8"
       style="padding: 0"
       data-topic="Transición a Fase II"
       data-icon="fa-forward-step"
@@ -1203,12 +1110,12 @@
       </div>
     </div>
 
-    <!-- SLIDE 11: TIPO DE SITIO Y PROPUESTA DE VALOR -->
+    <!-- SLIDE 9: TIPO DE SITIO WEB -->
     <div
       class="slide-container"
-      id="slide11"
-      data-topic="Tipo de Sitio Web y Propuesta de Valor"
-      data-icon="fa-user-tie"
+      id="slide9"
+      data-topic="Tipo de Sitio Web"
+      data-icon="fa-globe"
       data-color="var(--accent-blue)"
     >
       <div class="content-area" style="padding-top: 60px">
@@ -1219,52 +1126,50 @@
           >
             05
           </div>
-          TIPO DE SITIO Y PROPUESTA DE VALOR
+          TIPO DE SITIO WEB
         </div>
-        <div class="rect-grid-2" style="margin-top: 20px">
-          <div class="rect-tile">
-            <span class="canvas-tag">Tipo de Sitio Web</span>
-            <h3>Plataforma Transaccional e Informativa</h3>
-            <p style="margin-bottom: 20px">
-              El portal funciona como la puerta de acceso principal a la
-              plataforma de <strong>autoservicio</strong> del banco.
-            </p>
-            <ul>
-              <li>Informar sobre la institución y generar confianza.</li>
+        <div
+          class="rect-tile"
+          style="margin-top: 20px; border-left: 5px solid var(--accent-blue)"
+        >
+          <h3
+            style="
+              font-size: 30px;
+              color: var(--accent-blue);
+              text-transform: none;
+              margin-bottom: 20px;
+            "
+          >
+            Plataforma Financiera Digital Transaccional, Informativa y
+            Comercial.
+          </h3>
+          <p style="font-size: 18px; margin-bottom: 20px">
+            El portal no es un simple folleto digital, sino el núcleo operativo
+            del banco en internet. Sus funciones principales incluyen:
+          </p>
+          <div class="rect-grid-2" style="gap: 20px">
+            <ul class="highlight-list">
               <li>
-                Brindar servicios de transacciones y cobros en tiempo real.
+                <i class="fa-solid fa-arrow-right"></i> Gestión de operaciones
+                bancarias.
               </li>
               <li>
-                Integrar soluciones digitales para banca personal y empresarial.
+                <i class="fa-solid fa-arrow-right"></i> Captación digital de
+                clientes.
+              </li>
+              <li>
+                <i class="fa-solid fa-arrow-right"></i> Comercialización de
+                productos financieros.
               </li>
             </ul>
-          </div>
-          <div class="rect-tile solid-green">
-            <span class="canvas-tag" style="background-color: var(--bg-black)"
-              >Propuesta de Valor</span
-            >
-            <h3 style="color: var(--bg-black)">
-              Fiabilidad, Tiempo y Autonomía
-            </h3>
-            <p style="color: var(--text-white); margin-bottom: 20px">
-              El portal entrega valor resolviendo problemas de desplazamiento y
-              brindando control total:
-            </p>
-            <ul>
+            <ul class="highlight-list">
               <li>
-                <strong>Disponibilidad 24/7:</strong> Acceso ininterrumpido a
-                los fondos.
+                <i class="fa-solid fa-arrow-right"></i> Atención y soporte
+                omnicanal.
               </li>
               <li>
-                <strong>Ahorro de Tiempo:</strong> Evita traslados a sucursales
-                físicas.
-              </li>
-              <li>
-                <strong>Seguridad y Fiabilidad:</strong> Transacciones cifradas
-                y credibilidad bancaria.
-              </li>
-              <li>
-                <strong>Autonomía:</strong> Gestión de finanzas en tiempo real.
+                <i class="fa-solid fa-arrow-right"></i> Comunicación
+                institucional.
               </li>
             </ul>
           </div>
@@ -1272,12 +1177,158 @@
       </div>
     </div>
 
-    <!-- SLIDE 12: SEGMENTOS DE MERCADO -->
+    <!-- SLIDE 10: PROPUESTA DE VALOR -->
     <div
       class="slide-container"
-      id="slide12"
-      data-topic="Segmentos de Mercado y Cartera de Clientes"
-      data-icon="fa-user-tie"
+      id="slide10"
+      data-topic="Propuesta de Valor"
+      data-icon="fa-gem"
+      data-color="var(--accent-blue)"
+    >
+      <div class="content-area" style="padding-top: 60px">
+        <div class="slide-title">
+          <div
+            class="slide-number-square"
+            style="background-color: var(--accent-blue)"
+          >
+            05
+          </div>
+          PROPUESTA DE VALOR
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+            height: 100%;
+            padding-bottom: 40px;
+          "
+        >
+          <div
+            class="rect-tile solid-green"
+            style="justify-content: center; padding: 50px"
+          >
+            <i
+              class="fa-solid fa-gem"
+              style="
+                font-size: 60px;
+                color: var(--bg-black);
+                margin-bottom: 30px;
+              "
+            ></i>
+            <h3
+              style="
+                font-size: 34px;
+                color: var(--bg-black);
+                text-transform: none;
+                margin-bottom: 20px;
+                line-height: 1.2;
+              "
+            >
+              Experiencia Bancaria Centralizada y 24/7
+            </h3>
+            <p style="font-size: 20px; line-height: 1.6; color: white">
+              El portal digital del Banco BHD permite a clientes personales y
+              empresariales gestionar productos financieros de forma segura,
+              resolviendo la dependencia operativa de sucursales físicas.
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+            <div
+              class="rect-tile"
+              style="padding: 25px; border-top: 4px solid var(--accent-blue)"
+            >
+              <div
+                class="icon-square"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  font-size: 18px;
+                  margin-bottom: 15px;
+                "
+              >
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <h3 style="font-size: 16px">Inmediatez</h3>
+              <p style="font-size: 14px">
+                Reducción total del tiempo operativo en transacciones.
+              </p>
+            </div>
+            <div
+              class="rect-tile"
+              style="padding: 25px; border-top: 4px solid var(--accent-orange)"
+            >
+              <div
+                class="icon-square"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  font-size: 18px;
+                  margin-bottom: 15px;
+                "
+              >
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3 style="font-size: 16px">Seguridad</h3>
+              <p style="font-size: 14px">
+                Operaciones bajo estrictos estándares de cifrado.
+              </p>
+            </div>
+            <div
+              class="rect-tile"
+              style="padding: 25px; border-top: 4px solid var(--primary-green)"
+            >
+              <div
+                class="icon-square"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  font-size: 18px;
+                  margin-bottom: 15px;
+                "
+              >
+                <i class="fa-solid fa-mobile-screen"></i>
+              </div>
+              <h3 style="font-size: 16px">Integración</h3>
+              <p style="font-size: 14px">
+                Ecosistema unificado entre entorno web y móvil.
+              </p>
+            </div>
+            <div
+              class="rect-tile"
+              style="padding: 25px; background-color: #1a1a1a"
+            >
+              <div
+                class="icon-square"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  font-size: 18px;
+                  margin-bottom: 15px;
+                  color: var(--accent-blue);
+                "
+              >
+                <i class="fa-solid fa-user-check"></i>
+              </div>
+              <h3 style="font-size: 16px">Autoservicio</h3>
+              <p style="font-size: 14px">
+                Control total y personalización de la experiencia digital.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: SEGMENTOS DE MERCADO -->
+    <div
+      class="slide-container"
+      id="slide11"
+      data-topic="Segmentos de Mercado"
+      data-icon="fa-users"
       data-color="var(--accent-blue)"
     >
       <div
@@ -1292,59 +1343,107 @@
           >
             06
           </div>
-          SEGMENTOS Y CARTERA DE CLIENTES
+          SEGMENTOS DE MERCADO
         </div>
         <p style="margin-bottom: 30px; font-size: 18px">
-          ¿Para quiénes estamos creando valor a través de la plataforma web?
+          Clasificación estructural de los perfiles de usuarios a los que se
+          dirige la plataforma:
         </p>
 
-        <div class="rect-grid-3">
-          <div class="rect-tile">
-            <span class="canvas-tag">Banca Minorista</span>
-            <div class="icon-square" style="color: var(--accent-blue)">
-              <i class="fa-solid fa-users"></i>
-            </div>
-            <h3>Personas Físicas</h3>
+        <div class="rect-grid-2" style="gap: 30px">
+          <div
+            class="rect-tile"
+            style="border-top: 4px solid var(--accent-blue)"
+          >
+            <h3>Personas físicas</h3>
             <p>
-              Individuos y familias que requieren productos básicos y control
-              financiero diario.
+              Usuarios individuales y familias que gestionan finanzas
+              personales.
             </p>
-            <ul>
-              <li>Cuentas de ahorro y corrientes.</li>
-              <li>Tarjetas de crédito.</li>
-              <li>Préstamos personales.</li>
-            </ul>
           </div>
-          <div class="rect-tile">
-            <span class="canvas-tag">Banca Comercial</span>
-            <div class="icon-square" style="color: var(--accent-orange)">
-              <i class="fa-solid fa-store"></i>
-            </div>
+          <div
+            class="rect-tile"
+            style="border-top: 4px solid var(--accent-orange)"
+          >
             <h3>PYMES</h3>
             <p>
-              Emprendedores y pequeños negocios que buscan agilizar sus
-              operaciones.
+              Pequeñas y medianas empresas que requieren agilidad en cobros y
+              pagos.
             </p>
-            <ul>
-              <li>Gestión de cobros y pagos.</li>
-              <li>Préstamos de capital de trabajo.</li>
-              <li>Manejo de flujo de caja.</li>
-            </ul>
           </div>
-          <div class="rect-tile">
-            <span class="canvas-tag">Banca Mayorista</span>
-            <div class="icon-square" style="color: var(--primary-green)">
-              <i class="fa-solid fa-city"></i>
-            </div>
-            <h3>Corporativo</h3>
+          <div
+            class="rect-tile"
+            style="border-top: 4px solid var(--primary-green)"
+          >
+            <h3>Clientes corporativos</h3>
             <p>
-              Grandes organizaciones que necesitan soluciones financieras
-              complejas a gran escala.
+              Empresas de gran escala con necesidades complejas de tesorería e
+              inversión.
             </p>
-            <ul>
-              <li>Banca de inversión.</li>
-              <li>Pago masivo de nóminas.</li>
-              <li>Gestión de tesorería y divisas.</li>
+          </div>
+          <div class="rect-tile solid-green">
+            <h3 style="color: var(--bg-black)">Clientes digitales</h3>
+            <p>
+              Usuarios nativos que operan exclusiva y prioritariamente mediante
+              canales electrónicos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: CARTERA DE CLIENTES -->
+    <div
+      class="slide-container"
+      id="slide12"
+      data-topic="Cartera de Clientes"
+      data-icon="fa-briefcase"
+      data-color="var(--accent-blue)"
+    >
+      <div
+        class="left-green-anchor"
+        style="background-color: var(--accent-blue)"
+      ></div>
+      <div class="content-area" style="padding-left: 120px; padding-top: 60px">
+        <div class="slide-title">
+          <div
+            class="slide-number-square"
+            style="background-color: var(--accent-blue)"
+          >
+            06
+          </div>
+          CARTERA DE CLIENTES
+        </div>
+        <p style="margin-bottom: 30px; font-size: 18px">
+          Subdivisión por producto y afiliación gestionada desde la plataforma
+          web:
+        </p>
+
+        <div class="rect-tile">
+          <div class="rect-grid-3" style="gap: 20px">
+            <ul class="highlight-list">
+              <li><i class="fa-solid fa-wallet"></i> Cuentas de ahorro.</li>
+              <li>
+                <i class="fa-solid fa-credit-card"></i> Tarjetas de crédito.
+              </li>
+            </ul>
+            <ul class="highlight-list">
+              <li>
+                <i class="fa-solid fa-hand-holding-dollar"></i> Clientes de
+                préstamos.
+              </li>
+              <li>
+                <i class="fa-solid fa-building-user"></i> Empresas afiliadas.
+              </li>
+            </ul>
+            <ul class="highlight-list">
+              <li>
+                <i class="fa-solid fa-mobile"></i> Usuarios de banca digital.
+              </li>
+              <li>
+                <i class="fa-solid fa-chart-pie"></i> Clientes de inversión y
+                tesorería.
+              </li>
             </ul>
           </div>
         </div>
@@ -1355,8 +1454,8 @@
     <div
       class="slide-container"
       id="slide13"
-      data-topic="Relaciones con Clientes y Canales de Comunicación"
-      data-icon="fa-user-tie"
+      data-topic="Relaciones con Clientes"
+      data-icon="fa-handshake"
       data-color="var(--accent-blue)"
     >
       <div class="content-area" style="padding-top: 60px">
@@ -1370,94 +1469,55 @@
           RELACIONES Y CANALES
         </div>
         <div class="rect-grid-2" style="margin-top: 20px">
+          <!-- Relaciones -->
           <div
             class="rect-tile"
             style="border-top: 5px solid var(--primary-green)"
           >
-            <span class="canvas-tag">Relaciones con Clientes</span>
-            <h3>Escalabilidad mediante Autoservicio</h3>
-            <p style="margin-bottom: 20px">
-              El objetivo estratégico del portal es migrar a los clientes hacia
-              canales digitales para reducir costes operativos y agilizar el
-              servicio.
-            </p>
-            <div class="strip-list" style="max-width: 100%">
-              <div class="strip-item" style="min-height: 60px">
-                <div
-                  class="strip-header"
-                  style="width: 180px; font-size: 14px; padding: 10px 20px"
-                >
-                  AUTOSERVICIO
-                </div>
-                <div
-                  class="strip-body"
-                  style="font-size: 14px; padding: 10px 20px"
-                >
-                  El cliente gestiona todo independientemente.
-                </div>
-              </div>
-              <div class="strip-item" style="min-height: 60px">
-                <div
-                  class="strip-header"
-                  style="
-                    width: 180px;
-                    font-size: 14px;
-                    padding: 10px 20px;
-                    background-color: var(--accent-orange);
-                  "
-                >
-                  ASISTENCIA IA
-                </div>
-                <div
-                  class="strip-body"
-                  style="font-size: 14px; padding: 10px 20px"
-                >
-                  Soporte a través de chatbots automáticos.
-                </div>
-              </div>
-              <div class="strip-item" style="min-height: 60px">
-                <div
-                  class="strip-header"
-                  style="
-                    width: 180px;
-                    font-size: 14px;
-                    padding: 10px 20px;
-                    background-color: var(--accent-blue);
-                  "
-                >
-                  PERSONALIZADA
-                </div>
-                <div
-                  class="strip-body"
-                  style="font-size: 14px; padding: 10px 20px"
-                >
-                  Chat en vivo y centro de contacto telefónico.
-                </div>
-              </div>
-            </div>
+            <span class="canvas-tag">Estrategia de Relación</span>
+            <ul style="margin-top: 20px; font-size: 16px">
+              <li style="margin-bottom: 12px">Autoservicio digital.</li>
+              <li style="margin-bottom: 12px">
+                Soporte híbrido humano + Inteligencia Artificial.
+              </li>
+              <li style="margin-bottom: 12px">
+                Atención omnicanal ininterrumpida.
+              </li>
+              <li style="margin-bottom: 12px">
+                Personalización de servicios y experiencia.
+              </li>
+              <li style="margin-bottom: 12px">
+                Fidelización mediante productos integrados.
+              </li>
+            </ul>
           </div>
+          <!-- Canales -->
           <div
             class="rect-tile"
             style="border-top: 5px solid var(--accent-orange)"
+            data-topic="Canales de Comunicación"
+            data-icon="fa-satellite-dish"
           >
-            <span class="canvas-tag">Canales de Comunicación</span>
-            <h3>Omnicanalidad Interconectada</h3>
-            <p style="margin-bottom: 20px">
-              El portal actúa como la puerta principal, pero es parte de una red
-              de canales que entregan la propuesta de valor de forma coherente.
-            </p>
-            <ul>
-              <li>
-                <strong>Canales Directos:</strong> Portal web, App Móvil e
-                Internet Banking.
+            <span
+              class="canvas-tag"
+              style="background-color: var(--accent-orange)"
+              >Canales de Comunicación</span
+            >
+            <ul style="margin-top: 20px; font-size: 16px">
+              <li style="margin-bottom: 12px">
+                <strong>Directos:</strong> Portal web, Internet Banking y App
+                Móvil.
               </li>
-              <li>
-                <strong>Canales Físicos:</strong> Sucursales, Cajeros
-                Automáticos y Subagentes.
+              <li style="margin-bottom: 12px">
+                <strong>Físicos:</strong> Sucursales, Cajeros Automáticos y
+                Subagentes bancarios.
               </li>
-              <li>
-                <strong>Marketing:</strong> Redes sociales, correos y
-                notificaciones push.
+              <li style="margin-bottom: 12px">
+                <strong>Atención:</strong> Contact center y Chat en vivo.
+              </li>
+              <li style="margin-bottom: 12px">
+                <strong>Digitales:</strong> Redes sociales, correos electrónicos
+                y notificaciones push.
               </li>
             </ul>
           </div>
@@ -1469,8 +1529,8 @@
     <div
       class="slide-container"
       id="slide14"
-      data-topic="Actividades Clave y Recursos Clave"
-      data-icon="fa-user-tie"
+      data-topic="Actividades Clave"
+      data-icon="fa-cogs"
       data-color="var(--accent-blue)"
     >
       <div
@@ -1490,50 +1550,30 @@
         <div class="rect-grid-2" style="margin-top: 20px">
           <div class="rect-tile">
             <span class="canvas-tag">Actividades Clave</span>
-            <h3>La Maquinaria Operativa</h3>
-            <p>
-              Las acciones vitales para que la propuesta de valor funcione y se
-              entregue al cliente sin interrupciones:
-            </p>
-            <ul>
-              <li>
-                <strong>Procesamiento de Transacciones:</strong> Validar saldos
-                y autorizar pagos.
-              </li>
-              <li>
-                <strong>Ciberseguridad Continua:</strong> Monitoreo 24/7 para
-                prevenir fraudes.
-              </li>
-              <li>
-                <strong>Mantenimiento IT:</strong> Actualizaciones y plan de
-                contingencia.
-              </li>
-              <li>
-                <strong>Marketing e Innovación:</strong> Nuevas interfaces y
-                venta cruzada.
-              </li>
+            <ul style="margin-top: 20px">
+              <li>Gestión de <em>onboarding</em> digital.</li>
+              <li>Integración con plataformas móviles.</li>
+              <li>Gestión de identidad y autenticación.</li>
+              <li>Monitoreo antifraude continuo.</li>
+              <li>Analítica digital y personalización.</li>
             </ul>
           </div>
-          <div class="rect-tile">
-            <span class="canvas-tag">Recursos Clave</span>
-            <h3>Activos Fundamentales</h3>
-            <p>
-              Los elementos más costosos e importantes que permiten la
-              operatividad del banco digital:
-            </p>
-            <ul>
-              <li>
-                <strong>Tecnológicos:</strong> Servidores Cloud, Core Bancario,
-                protocolos SSL.
-              </li>
-              <li>
-                <strong>Talento Humano:</strong> Desarrolladores y expertos en
-                ciberseguridad.
-              </li>
-              <li>
-                <strong>Red de Aceptación:</strong> Infraestructura global para
-                tarjetas.
-              </li>
+          <div
+            class="rect-tile"
+            data-topic="Recursos Clave"
+            data-icon="fa-server"
+          >
+            <span
+              class="canvas-tag"
+              style="background-color: var(--primary-green)"
+              >Recursos Clave</span
+            >
+            <ul style="margin-top: 20px">
+              <li>Infraestructura cloud y servidores.</li>
+              <li>APIs bancarias y <em>Core</em> transaccional.</li>
+              <li>Base de datos centralizada de clientes.</li>
+              <li>Sistemas avanzados de autenticación.</li>
+              <li>Plataformas móviles y de escritorio.</li>
             </ul>
           </div>
         </div>
@@ -1545,7 +1585,7 @@
       class="slide-container"
       id="slide15"
       data-topic="Socios Clave"
-      data-icon="fa-user-tie"
+      data-icon="fa-handshake-angle"
       data-color="var(--accent-blue)"
     >
       <div class="content-area" style="padding-top: 60px">
@@ -1558,73 +1598,41 @@
           </div>
           SOCIOS CLAVE (PARTNERSHIPS)
         </div>
-        <p style="margin-bottom: 30px; font-size: 18px">
-          Aliados estratégicos de los cuales adquirimos recursos o
-          externalizamos actividades.
-        </p>
-
-        <div class="rect-grid-3">
+        <div class="rect-grid-3" style="margin-top: 20px">
           <div class="rect-tile solid-green">
-            <span class="canvas-tag" style="background-color: var(--bg-black)"
-              >Redes de Procesamiento</span
-            >
-            <h3 style="color: var(--bg-black)">Pagos e Interconexión</h3>
-            <p>
-              Aportan la tecnología para que el dinero salga del BHD hacia otros
-              bancos o comercios globales.
-            </p>
+            <div class="icon-square"><i class="fa-brands fa-cc-visa"></i></div>
+            <h3 style="color: var(--bg-black)">Redes de Procesamiento</h3>
             <ul>
-              <li>
-                <strong>Visa y Mastercard:</strong> Red de aceptación global.
-              </li>
-              <li>
-                <strong>UNAP / ACH:</strong> Conectividad interbancaria
-                (LBTR/SIP).
-              </li>
-              <li>Comercios aliados.</li>
+              <li>Visa y Mastercard.</li>
+              <li>Redes interbancarias ACH y LBTR.</li>
             </ul>
           </div>
           <div class="rect-tile">
-            <span class="canvas-tag">Proveedores Tecnológicos</span>
-            <h3>Cloud & Core Bancario</h3>
-            <p>
-              Proveen la capacidad de procesamiento y el motor de software para
-              manejar miles de cuentas simultáneas.
-            </p>
+            <div class="icon-square"><i class="fa-solid fa-cloud"></i></div>
+            <h3>Proveedores Tecnológicos</h3>
             <ul>
-              <li>Servicios Cloud (Azure / AWS).</li>
-              <li>Empresas de software bancario.</li>
-              <li>Certificadoras de Seguridad (SSL).</li>
+              <li>Proveedores tecnológicos cloud.</li>
+              <li>Proveedores de ciberseguridad y encriptación.</li>
             </ul>
           </div>
           <div class="rect-tile">
-            <span class="canvas-tag">Telcos & Reguladores</span>
-            <h3>Conectividad y Ley</h3>
-            <p>
-              Garantizan el acceso físico a internet y el cumplimiento del marco
-              legal dominicano.
-            </p>
+            <div class="icon-square"><i class="fa-solid fa-gavel"></i></div>
+            <h3>Conectividad y Regulación</h3>
             <ul>
-              <li>
-                <strong>Telecomunicaciones:</strong> Claro, Altice
-                (Infraestructura).
-              </li>
-              <li>
-                <strong>Reguladores:</strong> Superintendencia de Bancos (Ley
-                126-02).
-              </li>
+              <li>Empresas de telecomunicaciones.</li>
+              <li>Reguladores financieros dominicanos.</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 16: ESTRUCTURA DE COSTES Y FLUJO DE INGRESOS (MASSIVE GRID) -->
+    <!-- SLIDE 16: ESTRUCTURA DE COSTES Y FLUJO DE INGRESOS -->
     <div
       class="slide-container"
       id="slide16"
-      data-topic="Estructura de Costes y Flujo de ingresos"
-      data-icon="fa-user-tie"
+      data-topic="Estructura de Costes"
+      data-icon="fa-money-bill-wave"
       data-color="var(--accent-blue)"
     >
       <div class="massive-grid">
@@ -1640,7 +1648,11 @@
             y ciberseguridad.
           </p>
         </div>
-        <div class="massive-block green">
+        <div
+          class="massive-block green"
+          data-topic="Flujo de ingresos"
+          data-icon="fa-sack-dollar"
+        >
           <div class="massive-num" style="color: var(--bg-black)">02</div>
           <span class="canvas-tag" style="background-color: var(--bg-black)"
             >Costes Variables & RRHH</span
@@ -1686,136 +1698,378 @@
       </div>
     </div>
 
-    <!-- SLIDE 17: ESTRUCTURA VISUAL -->
+    <!-- SLIDE 17: EVALUACIÓN CRÍTICA (FODA) - NUEVA SLIDE -->
     <div
       class="slide-container"
       id="slide17"
-      data-topic="Conclusión y Cierre"
+      data-topic="Análisis Crítico"
+      data-icon="fa-chart-pie"
+      data-color="var(--accent-orange)"
+    >
+      <div class="massive-grid">
+        <!-- Fortalezas -->
+        <div class="massive-block green" style="padding: 40px 60px">
+          <h3
+            style="font-size: 28px; margin-bottom: 15px; color: var(--bg-black)"
+          >
+            <i class="fa-solid fa-arrow-trend-up"></i> Fortalezas
+          </h3>
+          <ul style="color: white; font-size: 16px">
+            <li>Plataforma moderna y responsive.</li>
+            <li>Integración fluida web + móvil.</li>
+            <li>Segmentación clara de usuarios.</li>
+            <li>Amplio ecosistema digital.</li>
+            <li>Enfoque fuerte en autoservicio.</li>
+          </ul>
+        </div>
+        <!-- Debilidades -->
+        <div class="massive-block black" style="padding: 40px 60px">
+          <h3
+            style="
+              font-size: 28px;
+              margin-bottom: 15px;
+              color: var(--accent-orange);
+            "
+          >
+            <i class="fa-solid fa-arrow-trend-down"></i> Debilidades
+          </h3>
+          <ul style="font-size: 16px">
+            <li>El homepage contiene una alta densidad de información.</li>
+            <li>Algunas rutas requieren múltiples clics para conversión.</li>
+            <li>
+              Existen múltiples subportales que fragmentan la experiencia.
+            </li>
+          </ul>
+        </div>
+        <!-- Amenazas -->
+        <div class="massive-block black" style="padding: 40px 60px">
+          <h3
+            style="
+              font-size: 28px;
+              margin-bottom: 15px;
+              color: var(--accent-orange);
+            "
+          >
+            <i class="fa-solid fa-triangle-exclamation"></i> Amenazas
+          </h3>
+          <ul style="font-size: 16px">
+            <li>Riesgos constantes de ciberseguridad y fraude.</li>
+            <li>Creciente competencia del sector Fintech.</li>
+            <li>Saturación de canales digitales y pérdida de atención.</li>
+          </ul>
+        </div>
+        <!-- Oportunidades -->
+        <div class="massive-block green" style="padding: 40px 60px">
+          <h3
+            style="font-size: 28px; margin-bottom: 15px; color: var(--bg-black)"
+          >
+            <i class="fa-solid fa-lightbulb"></i> Oportunidades
+          </h3>
+          <ul style="color: white; font-size: 16px">
+            <li>Mayor automatización de soporte mediante IA.</li>
+            <li>Personalización avanzada basada en comportamiento.</li>
+            <li>Simplificación y unificación de la navegación corporativa.</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Etiqueta central superpuesta -->
+      <div
+        style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: var(--bg-black);
+          padding: 15px 30px;
+          border: 2px solid var(--accent-orange);
+          z-index: 10;
+        "
+      >
+        <h2 style="font-size: 20px; letter-spacing: 2px; margin: 0">
+          EVALUACIÓN CRÍTICA
+        </h2>
+      </div>
+    </div>
+
+    <!-- SLIDE 18: RELACIÓN SITIO WEB Y NEGOCIO - NUEVA SLIDE -->
+    <div
+      class="slide-container"
+      id="slide18"
+      data-topic="Alineación Estratégica"
+      data-icon="fa-network-wired"
+      data-color="var(--accent-orange)"
+    >
+      <div class="content-area" style="padding-top: 60px">
+        <div class="slide-title" style="margin-bottom: 20px">
+          <div
+            class="slide-number-square"
+            style="
+              background-color: var(--accent-orange);
+              border-bottom-color: var(--primary-green);
+            "
+          >
+            07
+          </div>
+          SITIO WEB VS NEGOCIO
+        </div>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            height: 100%;
+            justify-content: center;
+            padding-bottom: 40px;
+          "
+        >
+          <!-- Caja Superior -->
+          <div
+            class="rect-tile"
+            style="
+              padding: 30px;
+              border-left: 8px solid var(--accent-orange);
+              background-color: #111;
+            "
+          >
+            <h3
+              style="
+                font-size: 24px;
+                color: var(--text-white);
+                margin-bottom: 0;
+                text-transform: none;
+              "
+            >
+              El portal web funciona como el
+              <span style="color: var(--accent-orange)">engranaje central</span>
+              de la estrategia comercial:
+            </h3>
+          </div>
+
+          <!-- Fila de 5 elementos (Flex) -->
+          <div style="display: flex; justify-content: space-between; gap: 15px">
+            <div
+              class="rect-tile"
+              style="
+                padding: 20px;
+                flex: 1;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-top: 3px solid var(--accent-blue);
+              "
+            >
+              <i
+                class="fa-solid fa-store"
+                style="
+                  font-size: 30px;
+                  color: var(--accent-blue);
+                  margin-bottom: 15px;
+                "
+              ></i>
+              <h4 style="font-size: 14px; margin-bottom: 0">
+                Canal<br />Comercial
+              </h4>
+            </div>
+            <div
+              class="rect-tile"
+              style="
+                padding: 20px;
+                flex: 1;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-top: 3px solid var(--primary-green);
+              "
+            >
+              <i
+                class="fa-solid fa-money-bill-transfer"
+                style="
+                  font-size: 30px;
+                  color: var(--primary-green);
+                  margin-bottom: 15px;
+                "
+              ></i>
+              <h4 style="font-size: 14px; margin-bottom: 0">
+                Plataforma<br />Transaccional
+              </h4>
+            </div>
+            <div
+              class="rect-tile"
+              style="
+                padding: 20px;
+                flex: 1;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-top: 3px solid var(--accent-orange);
+              "
+            >
+              <i
+                class="fa-solid fa-headset"
+                style="
+                  font-size: 30px;
+                  color: var(--accent-orange);
+                  margin-bottom: 15px;
+                "
+              ></i>
+              <h4 style="font-size: 14px; margin-bottom: 0">
+                Centro de<br />Atención
+              </h4>
+            </div>
+            <div
+              class="rect-tile"
+              style="
+                padding: 20px;
+                flex: 1;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-top: 3px solid var(--accent-blue);
+              "
+            >
+              <i
+                class="fa-solid fa-user-plus"
+                style="
+                  font-size: 30px;
+                  color: var(--accent-blue);
+                  margin-bottom: 15px;
+                "
+              ></i>
+              <h4 style="font-size: 14px; margin-bottom: 0">
+                Adquisición<br />Digital
+              </h4>
+            </div>
+            <div
+              class="rect-tile"
+              style="
+                padding: 20px;
+                flex: 1;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-top: 3px solid var(--primary-green);
+              "
+            >
+              <i
+                class="fa-solid fa-gem"
+                style="
+                  font-size: 30px;
+                  color: var(--primary-green);
+                  margin-bottom: 15px;
+                "
+              ></i>
+              <h4 style="font-size: 14px; margin-bottom: 0">
+                Fidelización<br />Continua
+              </h4>
+            </div>
+          </div>
+
+          <!-- Caja Inferior -->
+          <div
+            class="rect-tile solid-green"
+            style="
+              padding: 40px;
+              text-align: center;
+              border: none;
+              box-shadow: 0 10px 30px rgba(11, 121, 59, 0.3);
+            "
+          >
+            <i
+              class="fa-solid fa-rocket"
+              style="
+                font-size: 40px;
+                color: var(--bg-black);
+                margin-bottom: 20px;
+              "
+            ></i>
+            <h3
+              style="
+                font-size: 26px;
+                color: white;
+                text-transform: none;
+                margin-bottom: 0;
+                line-height: 1.4;
+              "
+            >
+              Reduce drásticamente la dependencia de sucursales físicas y
+              permite una <br /><span
+                style="
+                  color: var(--bg-black);
+                  font-weight: 800;
+                  background-color: var(--accent-orange);
+                  padding: 0 10px;
+                "
+                >escalabilidad digital absoluta</span
+              >
+              del modelo bancario.
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 19: CONCLUSIÓN FINAL -->
+    <div
+      class="slide-container"
+      id="slide19"
+      data-topic="Conclusiones"
       data-icon="fa-flag-checkered"
       data-color="var(--primary-green)"
     >
       <div class="content-area" style="padding-top: 60px">
         <div class="slide-title">
-          <div class="slide-number-square">05</div>
-          ESTRUCTURA FUNCIONAL VISUAL
+          <div class="slide-number-square">08</div>
+          CONCLUSIONES ACADÉMICAS
         </div>
         <div
-          style="
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin-top: 20px;
-          "
+          class="rect-tile solid-green"
+          style="margin-top: 20px; padding: 50px"
         >
-          <div>
-            <h3
-              style="font-size: 32px; margin-bottom: 20px; text-transform: none"
-            >
-              Diagrama Jerárquico
-            </h3>
-            <p style="font-size: 20px; margin-bottom: 20px">
-              Representación visual del flujo de navegación y organización de la
-              información del sitio web del BHD.
-            </p>
-            <div
-              style="
-                padding: 20px;
-                background-color: var(--primary-green);
-                color: var(--text-white);
-                border-left: 8px solid var(--accent-orange);
-              "
-            >
-              <p
-                style="
-                  color: white;
-                  font-weight: 700;
-                  font-family: &quot;Space Grotesk&quot;, sans-serif;
-                "
-              >
-                ARQUITECTURA DE CERO FRICCIÓN
-              </p>
-            </div>
-          </div>
+          <p
+            style="
+              font-size: 22px;
+              line-height: 1.6;
+              color: white;
+              margin-bottom: 30px;
+            "
+          >
+            El portal digital del Banco BHD representa una plataforma financiera
+            moderna orientada a la transformación digital, integrando funciones
+            transaccionales, comerciales y de atención al cliente dentro de un
+            ecosistema omnicanal.
+          </p>
           <div
-            class="strict-image-frame"
-            style="height: 400px; border-color: var(--primary-green)"
-          >
-            <img
-              src="./images/diagram.jpg"
-              alt="Website architecture sitemap diagram flowchart"
-              onerror="
-                this.src =
-                  'https://placehold.co/800x600/121212/ffffff?text=Diagram'
-              "
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 18: CONCLUSION FINAL -->
-    <div
-      class="slide-container"
-      id="slide18"
-      data-topic="Conclusión y Cierre"
-      data-icon="fa-flag-checkered"
-      data-color="var(--primary-green)"
-    >
-      <div class="massive-grid">
-        <div class="massive-block green">
-          <div class="massive-num" style="color: var(--bg-black)">01</div>
-          <h3
-            style="font-size: 30px; margin-bottom: 20px; color: var(--bg-black)"
-          >
-            Modelo Escalable
-          </h3>
-          <p style="color: var(--text-white); font-size: 20px">
-            Migra exitosamente la operatividad hacia el autoservicio, reduciendo
-            costos logísticos de las sucursales.
-          </p>
-        </div>
-        <div class="massive-block black">
-          <div class="massive-num" style="color: var(--primary-green)">02</div>
-          <h3 style="font-size: 30px; margin-bottom: 20px">
-            Experiencia UX/UI
-          </h3>
-          <p style="font-size: 20px">
-            Prioriza la navegación intuitiva, disminuyendo fricciones en la
-            adquisición digital de nuevos productos.
-          </p>
-        </div>
-        <div class="massive-block black">
-          <div class="massive-num" style="color: var(--primary-green)">03</div>
-          <h3 style="font-size: 30px; margin-bottom: 20px">
-            Ecosistema Digital
-          </h3>
-          <p style="font-size: 20px">
-            Sincronización impecable entre aliados (Visa, Cloud), el portal web,
-            la app móvil y el contact center omnicanal.
-          </p>
-        </div>
-        <div class="massive-block green">
-          <div class="massive-num" style="color: var(--bg-black)">04</div>
-          <h3
-            style="font-size: 30px; margin-bottom: 20px; color: var(--bg-black)"
-          >
-            Banca Moderna
-          </h3>
-          <p style="color: var(--text-white); font-size: 20px">
-            Cumple y supera los más estrictos estándares de ciberseguridad (SSL,
-            Ley 126-02) que exige el mercado actual.
+            style="
+              height: 2px;
+              width: 100px;
+              background-color: var(--accent-orange);
+              margin-bottom: 30px;
+            "
+          ></div>
+          <p style="font-size: 22px; line-height: 1.6; color: white">
+            El análisis evidencia cómo la estructura funcional del sitio soporta
+            directamente el modelo de negocio digital del banco mediante la
+            automatización, el autoservicio y la captación electrónica de
+            clientes, garantizando competitividad frente a las nuevas
+            tecnologías financieras.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- SLIDE 19: CIERRE -->
+    <!-- SLIDE 20: CIERRE -->
     <div
       class="slide-container"
-      id="slide19"
+      id="slide20"
       style="padding: 0"
       data-topic="Fin de la Presentación"
-      data-icon="fa-handshake"
+      data-icon="fa-power-off"
       data-color="var(--primary-green)"
     >
       <div class="center-block-layout">
@@ -1844,7 +2098,7 @@
               letter-spacing: 0.2em;
             "
           >
-            ESTRUCTURA & MODELO DE NEGOCIO BHD
+            ANÁLISIS DE SISTEMAS BHD
           </h3>
           <p
             style="
@@ -1880,7 +2134,7 @@
             if (index === currentIndex) {
               slide.classList.add("active");
 
-              // Extraer datos del Slide Activo
+              // Extraer datos del Slide Activo para el Footer
               const currentTopic = slide.getAttribute("data-topic");
               const currentIcon =
                 slide.getAttribute("data-icon") || "fa-microphone-lines";
@@ -1896,7 +2150,7 @@
                 topicContainer.style.borderLeftColor = currentColor;
 
                 topicText.style.opacity = "1";
-              }, 150); // Mismo tiempo que la mitad de la transición CSS
+              }, 150);
             } else {
               slide.classList.remove("active");
             }
