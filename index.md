@@ -1,18 +1,12 @@
-# Banco BHD - Análisis y Modelo de Negocio
+# Banco BHD — Análisis y Modelo de Negocio
 
 **2025 // REPUBLICA DOMINICANA**
 
 ---
 
-## Introducción y Presentación del Equipo
+## Portada
 
-**Banco BHD**
-
-ANÁLISIS Y DISEÑO DE SISTEMAS
-
-# SITIO WEB BHD
-
-Estructura Funcional y Modelo de Negocio (Canvas)
+SITIO WEB BHD — Estructura Funcional y Modelo de Negocio (Canvas)
 
 **Equipo:**
 
@@ -24,374 +18,245 @@ Estructura Funcional y Modelo de Negocio (Canvas)
 
 ---
 
-## Agenda Estructural
+## Agenda
 
-CONTENIDO DE LA PRESENTACIÓN
-
-- 01 Objetivo General
-- 02 Objetivos Específicos
-- 03 Estructura Funcional
-- 04 Secciones del Sitio
-- 05 Sitio & Propuesta
-- 06 Clientes & Canales
-- 07 Recursos & Socios
-- 08 Costes & Ingresos
-
----
-
-## Fundamentos: Objetivo General
-
-**Visión Estratégica de la Plataforma Digital**
-
-Ofrecer una plataforma digital integral que permita a clientes y usuarios acceder a productos y servicios financieros, realizar operaciones en línea y obtener información institucional, de manera segura, ágil y centrada en el cliente.
-
-**Valores clave:** SEGURIDAD, AGILIDAD
-
-Imagen: ![Digital banking mobile app interface corporate green black](./images/appbanking.png)
+1. Introducción y Objetivos
+2. Estructura Funcional del Portal
+3. Observaciones del Portal
+4. Estructura Visual / Diagrama
+5. Análisis del Modelo (BMC)
+6. Evaluación Crítica (FODA)
+7. Estructura de Costes y Flujo de Ingresos
+8. Relación Sitio ↔ Negocio
+9. Conclusiones y Recomendaciones
 
 ---
 
-## Objetivos Específicos (I)
+## Introducción
 
-- **Servicios Digitales:** Facilitar el acceso al Internet Banking para realizar operaciones financieras desde cualquier lugar con total seguridad.
-- **Promoción Comercial:** Promover y comercializar cuentas, préstamos, tarjetas e inversiones a través del portal web, ampliando el alcance del banco.
-- **Transparencia:** Brindar información corporativa clara: historia, misión, visión y estados financieros, fortaleciendo la confianza.
+El presente análisis evalúa la estructura funcional y el modelo de negocio digital del portal web del Banco BHD, identificando los componentes estratégicos y operacionales que permiten ofrecer servicios financieros digitales a clientes personales, comerciales y corporativos. El estudio se basa en la observación del portal oficial, su app móvil y el ecosistema digital asociado.
 
 ---
 
-## Objetivos Específicos (II)
+## Objetivo General
 
-- **Atención y Soporte:** Ofrecer canales de contacto, localizador de sucursales y cajeros, FAQs y sistema de quejas para garantizar una experiencia completa y resolutiva.
-- **Transformación Digital:** Impulsar la innovación y la experiencia del usuario a través de un ecosistema digital que integra la app móvil, redes sociales y la banca en línea.
-
----
-
-## Estructura Funcional General
-
-1. HEADER
-   - Logo, accesos rápidos, login a banca digital y menú principal.
-2. NAVEGACIÓN
-   - Inicio, Banca Digital, Productos, Corporativa, Atención, Información.
-3. CONTENIDO
-   - Secciones de productos, transacciones y exposición de marca.
-4. INFORMACIÓN
-   - Noticias, sala de prensa, promociones y ciberseguridad.
-5. FOOTER
-   - Políticas de privacidad, términos legales y redes sociales.
+Analizar la estructura funcional y el modelo de negocio digital del portal web del Banco BHD, identificando sus componentes operativos, estratégicos y tecnológicos dentro del ecosistema de banca digital.
 
 ---
 
-## Secciones del Sitio (I)
+## Objetivos Específicos
 
-- **Página de Inicio**
-  - Banner principal y ofertas
-  - Accesos rápidos (Cuentas)
-  - Productos destacados
+- Evaluar la organización funcional del portal y sus módulos principales.
+- Identificar los bloques del Business Model Canvas aplicables.
+- Analizar la experiencia digital para clientes personales y empresariales.
+- Determinar cómo el sitio soporta las operaciones y la estrategia comercial.
 
-- **Banca Digital**
-  - Consultas de saldo
-  - Transferencias
+---
 
-  # Banco BHD - Análisis y Modelo de Negocio
+## Estructura Funcional del Portal
 
-  **2025 // REPUBLICA DOMINICANA**
+1. Acceso y Autenticación
+   - Inicio de sesión personal/empresarial.
+   - Validación segura y recuperación de credenciales.
+2. Módulo Transaccional
+   - Transferencias, pagos y consulta de movimientos.
+3. Módulo Comercial
+   - Solicitud digital de productos; promoción de tarjetas y préstamos.
+4. Atención al Cliente
+   - FAQs, chat, contact center y localizador de sucursales.
+5. Informativo Institucional
+   - Noticias, RSE e información corporativa.
+6. Omnicanal
+   - Integración con app móvil, redes sociales y notificaciones.
 
-  ---
+---
 
-  ## Introducción
+## Observaciones Reales del Portal
 
-  El presente análisis evalúa la estructura funcional y el modelo de negocio digital del portal web del Banco BHD, identificando los componentes estratégicos y operacionales que permiten ofrecer servicios financieros digitales a clientes personales, comerciales y corporativos.
+- El homepage prioriza productos financieros y accesos rápidos.
+- Segmentación clara entre personas, PYMES y clientes corporativos.
+- Integración entre portal web y accesos a banca digital móvil.
+- Uso intensivo de CTAs orientados a conversión digital.
+- Navegación optimizada para dispositivos móviles.
 
-  El estudio se basa en la observación directa del portal oficial del banco y su ecosistema digital, incluyendo banca en línea, aplicaciones móviles y servicios de autoservicio.
+---
 
-  ---
+## Estructura Visual / Diagrama
 
-  ## Equipo
+Se incluye una representación jerárquica de la arquitectura del sitio (sitemap/diagrama). Imagen de referencia en `./images/diagram.jpg`.
 
-  - Elvis Paez — A00082603
-  - Andy Peña — A00113929
-  - Robert Batista — A00111345
-  - Pedro Garcia — A00121080
-  - Jesus Garcia — A00118637
+![Diagrama de arquitectura](./images/diagram.jpg)
 
-  ---
+---
 
-  ## Objetivo General
+## Tipo de Sitio Web
 
-  Analizar la estructura funcional y el modelo de negocio digital del portal web del Banco BHD, identificando sus componentes operativos, estratégicos y tecnológicos dentro del ecosistema de banca digital.
+Plataforma financiera digital: transaccional, informativa y comercial — núcleo operativo del banco en Internet.
 
-  ---
+Funcionalidades clave:
+- Gestión de operaciones bancarias.
+- Captación digital de clientes.
+- Comercialización de productos financieros.
+- Atención y soporte omnicanal.
 
-  ## Objetivos Específicos
+---
 
-  - Evaluar la organización funcional del portal web.
-  - Identificar los bloques del Business Model Canvas presentes en la plataforma.
-  - Analizar la experiencia digital ofrecida a clientes personales y empresariales.
-  - Determinar cómo el sitio web soporta las operaciones y estrategia comercial del banco.
+## Segmentos de Mercado
 
-  ---
+- Personas físicas
+- PYMES
+- Clientes corporativos
+- Clientes digitales (nativos digitales)
 
-  ## Agenda Estructural
+---
 
-  CONTENIDO DE LA PRESENTACIÓN
+## Propuesta de Valor
 
-  - 01 Objetivo General
-  - 02 Objetivos Específicos
-  - 03 Estructura Funcional
-  - 04 Secciones del Sitio
-  - 05 Sitio & Propuesta
-  - 06 Clientes & Canales
-  - 07 Recursos & Socios
-  - 08 Costes & Ingresos
+Experiencia bancaria centralizada, segura y disponible 24/7 que permite a clientes personales y empresariales gestionar productos financieros sin depender de sucursales.
 
-  ---
+Valor diferencial:
+- Inmediatez operativa
+- Seguridad y cumplimiento
+- Autoservicio y personalización
+- Integración web + móvil
 
-  ## Estructura Funcional del Portal
+---
 
-  1. Módulo de Acceso y Autenticación
-     - Inicio de sesión para banca personal y empresarial.
-     - Validación segura de usuarios.
-     - Recuperación de credenciales.
-  2. Módulo Transaccional
-     - Transferencias interbancarias.
-     - Pago de servicios e impuestos.
-     - Gestión de productos financieros.
-     - Consulta de balances y movimientos.
-  3. Módulo Comercial
-     - Solicitud digital de productos.
-     - Promoción de tarjetas, préstamos y cuentas.
-     - Captación de nuevos clientes.
-  4. Módulo de Atención al Cliente
-     - FAQs.
-     - Contact center.
-     - Chat y canales de soporte.
-     - Localizador de sucursales y cajeros.
-  5. Módulo Informativo e Institucional
-     - Noticias.
-     - Responsabilidad social.
-     - Información corporativa.
-     - Educación financiera.
-  6. Módulo Omnicanal
-     - Integración con app móvil.
-     - Redes sociales.
-     - Internet Banking.
-     - Notificaciones digitales.
+## Cartera de Clientes (Productos)
 
-  ---
+- Cuentas de ahorro y corrientes
+- Tarjetas de crédito
+- Préstamos y financiamiento
+- Servicios de inversión y tesorería
 
-  ## Secciones del Sitio (resumen y observaciones)
+---
 
-  Secciones principales del portal (resumen):
+## Relaciones y Canales
 
-  - Página de Inicio: banner, productos destacados y accesos rápidos.
-  - Banca Digital: consultas, transferencias, pagos y gestión de cuentas.
-  - Productos: cuentas, tarjetas, préstamos e inversiones.
-  - Corporativa: información institucional y estados financieros.
-  - Atención: FAQs, formularios, localizador de sucursales y canales de soporte.
-  - Contenido: noticias, promociones y recursos de educación financiera.
-  - Canales alternos: app móvil, redes sociales y contact center.
+Relaciones:
+- Autoservicio digital y soporte híbrido (humano + IA)
+- Personalización y fidelización mediante productos integrados
 
-  Observaciones reales del portal:
+Canales:
+- Portal Web, Internet Banking y App Móvil
+- Sucursales y cajeros automáticos
+- Contact center, chat y redes sociales
 
-  - El homepage prioriza productos financieros y accesos rápidos.
-  - Existe segmentación clara entre clientes personales, empresariales y PYMES.
-  - El portal integra accesos directos a banca digital y aplicaciones móviles.
-  - El diseño utiliza CTAs visibles orientados a conversión digital.
-  - La navegación está optimizada para dispositivos móviles.
+---
 
-  ---
+## Actividades y Recursos Clave
 
-  ## Tipo de Sitio Web
+Actividades:
+- Gestión de onboarding digital y procesos transaccionales
+- Monitoreo antifraude y ciberseguridad
+- Analítica y personalización
+- Mantenimiento IT y marketing digital
 
-  Plataforma Financiera Digital Transaccional, Informativa y Comercial.
+Recursos:
+- Infraestructura cloud y servidores
+- APIs bancarias y Core transaccional
+- Base de datos centralizada y sistemas de identidad
+- Talento especializado en desarrollo y seguridad
 
-  Funciones principales:
+---
 
-  - Gestión de operaciones bancarias.
-  - Captación digital de clientes.
-  - Comercialización de productos financieros.
-  - Atención y soporte omnicanal.
-  - Comunicación institucional.
+## Socios Clave
 
-  ---
+- Redes de procesamiento (Visa, Mastercard)
+- Proveedores cloud y tecnológicos
+- Proveedores de ciberseguridad
+- Telecomunicaciones y reguladores
 
-  ## Propuesta de Valor
+---
 
-  El portal digital del Banco BHD ofrece una experiencia bancaria centralizada, segura y disponible 24/7, permitiendo a clientes personales y empresariales gestionar productos financieros sin depender exclusivamente de sucursales físicas.
+## Estructura de Costes y Flujo de Ingresos
 
-  Valor ofrecido:
+Costes principales:
+- Infraestructura y licencias
+- Nómina especializada y soporte operativo
+- Marketing digital y escalamiento de recursos
 
-  - Acceso inmediato a servicios bancarios.
-  - Reducción del tiempo operativo.
-  - Seguridad transaccional.
-  - Autoservicio digital.
-  - Integración móvil y web.
-  - Personalización de la experiencia digital.
+Fuentes de ingresos:
+- Comisiones transaccionales
+- Intereses por productos (créditos)
+- Suscripciones empresariales y servicios asociados
 
-  ---
+---
 
-  ## Segmentos de Mercado
+## Evaluación Crítica (FODA)
 
-  Segmentos de Mercado:
+Fortalezas:
+- Plataforma moderna y responsive
+- Integración web + móvil
+- Enfoque en autoservicio
 
-  - Personas físicas: usuarios individuales y familias.
-  - PYMES: pequeñas y medianas empresas.
-  - Clientes corporativos: empresas de gran escala.
-  - Clientes digitales: usuarios que operan exclusivamente mediante canales electrónicos.
+Debilidades:
+- Alta densidad de información en la homepage
+- Posible fragmentación por subportales
 
-  Cartera de Clientes (productos y grupos):
+Oportunidades:
+- Automatización mediante IA
+- Personalización avanzada por comportamiento
 
-  - Cuentas de ahorro y corrientes.
-  - Tarjetas de crédito.
-  - Clientes de préstamos.
-  - Empresas afiliadas y clientes empresariales.
-  - Usuarios de banca digital.
-  - Clientes de inversión y tesorería.
+Amenazas:
+- Riesgos de ciberseguridad
+- Competencia fintech
 
-  ---
+---
 
-  ## Estrategia de Relación con Clientes
+## Business Model Canvas (Resumen)
 
-  Estrategia de Relación:
+- Socios Clave: Visa, Mastercard, proveedores cloud, reguladores
+- Actividades Clave: Procesamiento seguro, mantenimiento IT, marketing
+- Recursos Clave: Core bancario, infraestructura cloud, personal
+- Propuesta de Valor: Experiencia segura, 24/7, autoservicio
+- Relaciones: Autoservicio + soporte híbrido (IA)
+- Canales: Portal web, app móvil, contact center
+- Segmentos: Personas, PYMES, Corporativos, Nativos digitales
+- Estructura de Costes: Servidores, licencias, RRHH, marketing
+- Flujo de Ingresos: Comisiones, intereses, suscripciones
 
-  - Autoservicio digital.
-  - Soporte híbrido humano + IA.
-  - Atención omnicanal.
-  - Personalización de servicios.
-  - Fidelización mediante productos integrados.
+---
 
-  Canales de Comunicación:
+## Relación Sitio ↔ Negocio
 
-  - Canales directos: portal web, app móvil e Internet Banking.
-  - Canales físicos: sucursales, cajeros automáticos y subagentes.
-  - Marketing: redes sociales, correos y notificaciones push.
+El portal es el engranaje central de la estrategia comercial: canal comercial, plataforma transaccional, centro de atención y herramienta de adquisición y fidelización, reduciendo la dependencia de sucursales físicas.
 
-  ---
+---
 
-  ## Actividades Clave
+## Conclusiones
 
-  - Procesamiento de transacciones y validación.
-  - Ciberseguridad continua y monitoreo antifraude.
-  - Gestión de onboarding digital.
-  - Integración con plataformas móviles y APIs.
-  - Gestión de identidad y autenticación.
-  - Mantenimiento IT y planes de contingencia.
-  - Analítica digital y personalización.
-  - Marketing digital y captación.
+El portal digital del Banco BHD es una plataforma integral que soporta el modelo de negocio digital mediante automatización, autoservicio y captura electrónica de clientes. Ofrece competitividad frente a nuevas tecnologías si se mantiene la inversión en seguridad y experiencia de usuario.
 
-  ---
+---
 
-  ## Recursos Clave
+## Recomendaciones
 
-  - Infraestructura cloud (proveedores tecnológicos).
-  - APIs bancarias y pasarelas de pago.
-  - Base de datos de clientes y sistemas de persistencia.
-  - Sistemas de autenticación y gestión de identidades.
-  - Plataformas móviles y aplicaciones.
-  - Talento humano especializado (desarrollo y seguridad).
-  - Redes de aceptación para pagos.
+- Incluir capturas reales del portal en la presentación.
+- Añadir un Business Model Canvas visual completo.
+- Simplificar rutas críticas para conversión.
+- Implementar mayor automatización del soporte (IA).
+- Centralizar subportales para evitar fragmentación.
 
-  ---
+---
 
-  ## Socios Clave
+## Cierre
 
-  - Visa y Mastercard.
-  - Redes interbancarias (ACH, LBTR).
-  - Proveedores tecnológicos cloud y plataformas.
-  - Pasarelas de pago y procesadores.
-  - Empresas de telecomunicaciones.
-  - Reguladores financieros dominicanos.
-  - Proveedores de ciberseguridad.
+**GRACIAS**
 
-  ---
+ANÁLISIS DE SISTEMAS BHD — BHD.COM.DO
 
-  ## Evaluación Crítica del Portal
+---
 
-  Fortalezas:
+## Script (resumen)
 
-  - Plataforma moderna y responsive.
-  - Integración web + móvil.
-  - Segmentación clara de usuarios.
-  - Amplio ecosistema digital.
-  - Enfoque fuerte en autoservicio.
+El archivo `index.html` incluye un script que:
 
-  Debilidades:
+- Controla la visibilidad de las slides (`.slide-container`).
+- Maneja navegación con botones y teclado (flechas, espacio).
+- Actualiza contador y tema según slide activo.
+- Calcula escala responsiva para adaptar la presentación.
 
-  - Alta densidad informativa en el homepage.
-  - Algunas rutas requieren múltiples clics.
-  - Múltiples subportales que pueden fragmentar la experiencia.
+---
 
-  Oportunidades:
-
-  - Mayor automatización mediante IA.
-  - Personalización avanzada basada en comportamiento.
-  - Simplificación de navegación corporativa.
-
-  Amenazas:
-
-  - Riesgos de ciberseguridad.
-  - Competencia fintech.
-  - Saturación de canales digitales.
-
-  ---
-
-  ## Relación entre Sitio Web y Modelo de Negocio
-
-  El portal web funciona como:
-
-  - Canal comercial.
-  - Plataforma transaccional.
-  - Centro de atención.
-  - Ecosistema de adquisición digital.
-  - Herramienta de fidelización.
-
-  La plataforma reduce la dependencia operativa de sucursales físicas y permite escalabilidad digital del modelo bancario.
-
-  ---
-
-  ## Conclusión
-
-  El portal digital del Banco BHD representa una plataforma financiera moderna orientada a la transformación digital, integrando funciones transaccionales, comerciales y de atención al cliente dentro de un ecosistema omnicanal.
-
-  El análisis evidencia cómo la estructura funcional del sitio soporta directamente el modelo de negocio digital del banco mediante automatización, autoservicio y captación electrónica de clientes.
-
-  ### Recomendación final
-
-  Antes de presentar:
-
-  - Agregar capturas reales del sitio.
-  - Incluir un Business Model Canvas visual completo.
-  - Añadir una slide de análisis crítico (SWOT).
-  - Proveer evidencia del portal real (URLs y capturas).
-  - Mostrar claramente la conexión portal ↔ negocio.
-
-  Eliminar:
-
-  - Lenguaje excesivamente corporativo o publicitario.
-  - Frases tipo marketing sin evidencia.
-  - Conceptos genéricos sin respaldo en el portal real.
-
-  ---
-
-  ## Cierre
-
-  **GRACIAS**
-
-  ESTRUCTURA & MODELO DE NEGOCIO BHD
-
-  BHD.COM.DO
-
-  ---
-
-  ## Script (resumen)
-
-  El sitio incluye un script de navegación que:
-
-  - Controla la visibilidad de las slides (.slide-container).
-  - Maneja botones prev/next y teclado (flechas y espacio).
-  - Actualiza contador de slides y tema (texto e ícono) según slide activo.
-  - Calcula escala responsiva para ajustar la presentación al tamaño de ventana.
-
-  ---
-
-  *Documento corregido a partir de index.html y las indicaciones proporcionadas.*
+*Documento actualizado a partir de `index.html`.*
